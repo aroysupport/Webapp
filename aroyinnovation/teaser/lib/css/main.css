@@ -1,0 +1,44 @@
+body {
+	background:  #3c0505 !important;
+	margin:0;
+}
+#wrapper {
+	display: table;
+	background: #3c0505;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+#container {
+	display: table-cell;
+	vertical-align: middle;
+}
+#progress-bar {
+	margin: 0 auto;
+	display: block;
+	width: 11%;
+	text-align: center;
+}
+#progress {
+	color: white;
+	font-size: 30pt;
+}
+#logo {
+	display: block;
+	width: 100%;
+	margin: 0 auto;
+}
+#teaser {
+	display: block;
+	margin: 0 auto;
+}
+@media only screen and (max-width: 1440px) {
+	#teaser {
+		width: 100%;
+	}
+}
+@media only screen and (min-width: 1441px) {
+	#teaser {
+		width: 1440px;
+	}
+}
