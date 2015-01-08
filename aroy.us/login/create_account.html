@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+	<head>
+		<!-- set the encoding of your site -->
+		<meta charset="utf-8">
+		<title>Aroy Innovation</title>
+		<!-- include the site stylesheet -->
+		<link href="css/all.css" rel="stylesheet" type="text/css" media="all"/>
+		<!-- include jQuery library -->
+		<!-- include HTML5 IE enabling script for IE -->
+		<!--[if IE]><script type="text/javascript" src="js/ie.js"></script><![endif]-->
+	</head>
+	<body>
+		<!-- main container of all the page elements -->
+		<div id="wrapper" class="login">
+			<!-- login block -->
+			<div class="register-block">
+				<h1>Register as a new user</h1>
+				<!-- register form -->
+				<form class="register-form" action="http://aroy.us/php/index.php?method=createUser"  method="post">
+					<fieldset>
+						<div class="row">
+							<label for="name">Full Name:</label>
+							<input id="name" name="name" type="text">
+						</div>
+						<div class="row">
+							<label for="email">Email address:</label>
+							<input class="email" id="email" type="email" value="">
+						</div>
+						<div class="row">
+							<label for="password">Password:</label>
+							<input class="password" id="password" type="password" value="">
+						</div>
+						<div class="row">
+							<label for="password1">Confirm password:</label>
+							<input class="password" name="password" id="password1" type="password" value="">
+						</div>
+						<div class="row">
+							<input id="UserID" name="UserID" type="text" value="3" style="display:none;">
+						</div>
+						<div class="row">
+							<input id="Country" name="Country" type="text" value="US" style="display:none;">
+						</div>
+						<div class="row">
+							<input class="reset" type="reset" value="Clear">
+							<input type="submit" value="Continue">
+						</div>
+					</fieldset>
+				</form>
+				<!--<fieldset>
+					<legend>
+						Get Data From Node.JS Server
+					</legend>
+					<input type="button" id="get_data" value="Get Data From Server">
+					<!--Backbone.JS code is written to send GET request to the server on clicking the button --
+				</fieldset>-->
+				<div class="collections"></div>
+			</div>
+		</div>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')
+		</script>
+		<!-- include custom JavaScript -->
+		<script type="text/javascript" src="js/placeholder.main.js"></script>
+		<script type="text/javascript" src="js/lib/underscore/underscore.js"></script>
+		<script type="text/javascript" src="js/lib/backbone/backbone.js"></script>
+		<script type="text/javascript" src="js/backbone.main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,14 @@
+
+.wrapper{
+	background:#3c0505;
+}
+.wrapper-container {
+    display: table;
+    margin: 0 auto;
+    color:#e5e2e1;
+}
+.content  {
+    display: table-cell;
+    vertical-align: middle;
+    
+}

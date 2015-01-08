@@ -1,0 +1,8 @@
+.setting-area li a:hover {
+	filter: alpha(opacity=80);
+}
+.instricition-box input[type="text"],
+.micro-block input[type="text"],
+.aside .box ul li .email, .aside .box ul li input[type="email"] {
+	line-height: 16px;
+}

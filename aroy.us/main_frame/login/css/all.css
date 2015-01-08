@@ -1,0 +1,284 @@
+/*
+Copyright (c) 2011, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.com/yui/license.html
+version: 2.9.0
+*/
+/**
+ * YUI Reset
+ * @module reset
+ * @namespace
+ * @requires 
+ */
+html {
+	color: #000;
+	background: #3c0505;
+}
+body, div, dl, dt, dd, ol, ul, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, select, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+fieldset, img {
+	border: 0;
+}
+address, button, caption, cite, code, dfn, em, input, optgroup, option, select, strong, textarea, th, var {
+	font: inherit;
+}
+del, ins {
+	text-decoration: none;
+}
+li {
+	list-style: none;
+}
+caption, th {
+	text-align: left;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+q:before, q:after {
+	content: '';
+}
+abbr, acronym {
+	border: 0;
+	font-variant: normal;
+}
+sup {
+	vertical-align: baseline;
+}
+sub {
+	vertical-align: baseline;
+}
+legend {
+	color: #000;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration, input[type=search]::-webkit-search-results-button, input[type=search]::-webkit-search-results-decoration {
+ -webkit-appearance:none;
+}
+input[type=search] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+}
+body {
+	color: #333;
+	font: 11px/13px Helvetica, Arial, sans-serif;
+	background: #3c0505;
+	min-width: 1280px;
+	overflow-y: hidden;
+}
+
+::-webkit-input-placeholder {
+ color: #a3a3a3;
+}
+:-moz-placeholder {
+ color: #a3a3a3;
+}
+::-moz-placeholder {
+ color: #a3a3a3;
+ opacity: 1;
+}
+:-ms-input-placeholder {
+ color: #a3a3a3;
+}
+#wrapper {
+	max-width: 1200px;
+	padding: 0 40px;
+	margin: 0 auto;
+	overflow: hidden;
+	
+}
+#header {
+	overflow: hidden;
+	padding: 15px 0 0;
+}
+#wrapper.login {
+	max-width: 490px;
+	margin: 60px auto 0;
+	padding: 0;
+}
+.register-block, .login-block {
+	margin: 0 0 23px;
+	overflow: hidden;
+	background: #e5e2e1;
+	padding: 9px 0 90px;
+}
+.logo {
+	overflow: hidden;
+	width: 291px;
+	height: 320px;
+	margin: 0 auto 21px;
+}
+.logo img {
+	display: block;
+}
+.login-form {
+	overflow: hidden;
+	max-width: 240px;
+	margin: 0 auto;
+	text-align: center;
+}
+.login-form .row:first-child {
+	margin: 0 0 15px;
+}
+.login-form .row {
+	overflow: hidden;
+	margin: 0 0 14px;
+}
+.login-form .row input[type="submit"], .login-form .row .password, .login-form .row input[type="password"], .login-form .row input[type="text"] {
+	font-weight: bold;
+	font-size: 17px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+textarea, .password, .email, input[type="email"], input[type="password"], input[type="text"] {
+	width: 100%;
+	border: 1px solid #000;
+	background: #fff;
+	height: 30px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	padding: 3px 15px;
+	color: #a3a3a3;
+	font-size: 11px;
+	line-height: 20px;
+	display: block;
+	outline: none;
+	box-shadow: inset 0 0 1px #eee;
+	-webkit-box-shadow: inset 0 0 1px #eee;
+	-moz-box-shadow: inset 0 0 1px #eee;
+}
+.add-form .close, .register-form .row .reset, .register-form .row input[type="reset"], input[type="submit"] {
+	display: block;
+	padding: 0;
+	margin: 0 0 8px;
+	cursor: pointer;
+	text-align: center;
+	background: #3c0505;
+	width: 100%;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	color: #fff;
+	font-size: 11px;
+	line-height: 13px;
+	font-weight: bold;
+	border: 0;
+	height: 30px;
+}
+.add-form .close:hover, .register-form .row input[type="submit"]:hover, .register-form .row .reset:hover, .register-form .row input[type="reset"]:hover, .login-form .row input[type="submit"]:hover {
+	background: #5e3131;
+}
+.login-form .account {
+	font-size: 17px;
+	line-height: 19px;
+	color: #c43333;
+	text-decoration: none;
+}
+.login-form .account:hover {
+	text-decoration: underline;
+}
+.register-block {
+	padding: 32px 40px 32px 41px;
+	min-height: 536px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+.register-block .register-form .row {
+	margin: 0 0 17px;
+	text-align: center;
+}
+.register-block .row:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+.register-form:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+.register-form .row label {
+	color: #000;
+	font-size: 17px;
+	line-height: 19px;
+	padding: 5px 0;
+	text-align: left;
+	float: left;
+	max-width: 165px;
+	overflow: hidden;
+}
+h1 {
+	margin: 0 0 26px;
+	font-size: 21px;
+	line-height: 23px;
+	color: #3c0505;
+	font-weight: bold;
+}
+.register-form .row .password, .register-form .row .email, .register-form .row input[type="email"], .register-form .row input[type="password"], .register-form .row input[type="text"] {
+	width: 58.9%;
+	float: right;
+	padding: 3px 5px;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 22px;
+}
+.register-form .row .reset, .register-form .row input[type="reset"], .register-form .row input[type="submit"] {
+	width: 120px;
+	font-size: 17px;
+	padding: 0 10px;
+	margin: 20px 6px 0;
+	display: inline-block;
+	vertical-align: top;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+input[type="submit"]:hover {
+	background: #5c2f2e;
+}
+.msg{
+	font-size: medium;
+	position: fixed;
+}
+#footer {
+	overflow: hidden;
+	padding: 0 0 28px;
+}
+.copyright {
+	color: #c5c5c5;
+	float: left;
+	position: relative;
+}
+.copyright:before {
+	background: url(../images/sprite.png) no-repeat;
+	width: 39px;
+	height: 23px;
+	margin: 0 3px 0 0;
+	display: inline-block;
+	vertical-align: bottom;
+	content: "";
+}
+.copyright a {
+	color: #c5c5c5;
+	text-decoration: none;
+}
+.help:hover, .copyright a:hover {
+	text-decoration: underline;
+}
+.help {
+	float: right;
+	text-decoration: none;
+	color: #c43333;
+	font-size: 17px;
+	line-height: 19px;
+	font-weight: bold;
+	margin: 3px 0 0;
+}

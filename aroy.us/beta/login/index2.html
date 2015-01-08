@@ -1,0 +1,63 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<!-- set the encoding of your site -->
+		<meta charset="utf-8">
+		<title>Aroy Innovation</title>
+		<!-- include the site stylesheet -->
+		<link href="css/all.css" rel="stylesheet" type="text/css" media="all"/>
+		<!-- include HTML5 IE enabling script for IE -->
+		<!--[if IE]><script type="text/javascript" src="js/ie.js"></script><![endif]-->
+	</head>
+	<body>
+		<!-- main container of all the page elements -->
+		<div id="wrapper" class="login">
+			<!-- login block -->
+			<div class="login-block">
+				<!-- page logo -->
+				<div class="logo">
+					<a href="#"><img src="images/logo.png" width="291" height="320" alt="AROY INNOVATION"></a>
+				</div>
+				<!-- login form -->
+				<form class="login-form" action="http://aroy.us/php/index.php?method=checkAccount"  method="post">
+					<fieldset>
+						<div class="row">
+							<input class="UserID" name="Name" type="text" placeholder="UserID">
+						</div>
+						<div class="row">
+							<input class="password" name="Password" type="password" placeholder="Password">
+						</div>
+						<div class="row">
+							<input type="submit" value="Login">
+							<a class="account" href="mailto:support@aroy.us">Create a new account</a>
+						</div>
+					</fieldset>
+					<div class="msg"></div>
+				</form>
+			</div>
+			<!-- footer of the page -->
+			<footer id="footer">
+				<span class="copyright">Copyright © 2014 <a href="#">AROY INNOVATION</a></span><a class="help" href="#">Help</a>
+			</footer>
+		</div>
+		<!-- include jQuery library -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>');
+		</script>
+		<!-- include custom JavaScript -->
+		<script type="text/javascript" src="js/placeholder.main.js"></script>
+		<!-- include HTML5 IE enabling script for IE -->
+		<script>
+			function getUserName() {
+				var m = window.location.search.match(/error=([^&]*)/);
+				if (m != null) {
+					$(".msg").hide();
+					$(".msg").html(decodeURIComponent(m[1]).replace(/\+/g, ' ')).delay(1000).fadeIn("fast");
+				}
+			}
+
+			getUserName();
+		</script>
+	</body>
+</html>

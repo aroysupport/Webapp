@@ -1,0 +1,163 @@
+#slider1_container {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 875px;
+	height: 426px;
+	background: white;
+	overflow: hidden;
+	background: none;
+	/*margin: 0 auto;*/
+	
+}
+#loading {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+#loading #first-loading {
+	filter: alpha(opacity=70);
+	opacity: 0.7;
+	position: absolute;
+	display: block;
+	background-color: #000000;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+#loading #second-loading {
+	position: absolute;
+	display: block;
+	background: url(../../landing_page/js/slider-master/img/loading.gif) no-repeat center center;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+#slides {
+	cursor:pointer;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 680px;
+	height: 426px;
+	overflow: hidden;
+}
+#thumbnavigator {
+	position: absolute;
+	/*width: 100px;
+	height: 300px;
+	left: 505px;*/
+	top: 0px;
+		width: 182px;
+	height: 424px;
+	left: 690px;
+	border: 1px solid #C9C9C9;
+	background: none;
+}
+#prototype {
+	position: absolute;
+	width: 157px;
+	height: 100px;
+	top: 0;
+	left: 0;
+	cursor: pointer !important;
+	background: none;
+}
+#prototype img {
+	width: 152px;
+}
+.jssort11 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.jssort11 .i, .jssort11 .pav:hover .i {
+	position: absolute;
+	top: 3px;
+	left: 2px;
+	width: 100%;
+	border: #D38D06 2px solid;
+}
+* html .jssort11 .i {
+	WIDTH /**/: 62px;
+	HEIGHT /**/: 32px;
+}
+.jssort11 .pav .i {
+	border: white 1px solid;
+}
+.jssort11 .t, .jssort11 .pav:hover .t {
+	position: absolute;
+	top: 3px;
+	left: 68px;
+	width: 129px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	color: #fc9835;
+	font-size: 13px;
+	font-weight: 700;
+}
+.jssort11 .pav .t, .jssort11 .phv .t, .jssort11 .p:hover .t {
+	color: #fff;
+}
+.jssort11 .c, .jssort11 .pav:hover .c {
+	position: absolute;
+	top: 38px;
+	left: 3px;
+	width: 197px;
+	height: 31px;
+	line-height: 31px;
+	color: #fff;
+	font-size: 11px;
+	font-weight: 400;
+	overflow: hidden;
+}
+.jssort11 .pav .c, .jssort11 .phv .c, .jssort11 .p:hover .c {
+	color: #fc9835;
+}
+.jssort11 .t, .jssort11 .c {
+	transition: color 2s;
+	-moz-transition: color 2s;
+	-webkit-transition: color 2s;
+	-o-transition: color 2s;
+}
+.jssort11 .p:hover .t, .jssort11 .phv .t, .jssort11 .pav:hover .t, .jssort11 .p:hover .c, .jssort11 .phv .c, .jssort11 .pav:hover .c {
+	transition: none;
+	-moz-transition: none;
+	-webkit-transition: none;
+	-o-transition: none;
+}
+.jssort11 .p {
+	background: white;
+}
+.jssort11 .pav, .jssort11 .pdn {
+	background: white;
+}
+.jssort11 .p:hover, .jssort11 .phv, .jssort11 .pav:hover {
+	background: white;
+}
+/*slideshow customize*/
+.jssort11 > div {
+	top: 3px !important;
+}
+.jssort11 .i {
+	border: none;
+}
+.jssort11 .pav .i, .jssort11 .pav:hover .i {
+	border: #D38D06 2px solid;
+}
+/*arrow navigation*/
+.jssora13l, .jssora13r, .jssora13ldn, .jssora13rdn, .jssora13l:hover, .jssora13r:hover {
+	background-position: 0 0;
+	position: absolute;
+	cursor: pointer;
+	display: block;
+    overflow:hidden;
+}
+.jssora13l, .jssora13ldn {	
+    background: url(../img/arrow-previous.png) no-repeat;   
+}
+.jssora13r, .jssora13rdn{
+	background: url(../img/arrow-next.png) no-repeat;
+	right: 195px !important;
+}

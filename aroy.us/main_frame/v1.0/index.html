@@ -1,0 +1,912 @@
+<!doctype html>
+<html>
+	<head>
+		<!-- set the encoding of your site -->
+		<meta charset="utf-8">
+		<meta http-equiv='cache-control' content='no-cache'>
+		<meta http-equiv='expires' content='0'>
+		<meta http-equiv='pragma' content='no-cache'>
+		<title>Aroy Innovation</title>
+		<!-- include the site stylesheet -->
+		<link href="css/all.css" rel="stylesheet" type="text/css" media="all"/>
+		<link href="css/jcf.css" rel="stylesheet" type="text/css" media="all"/>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link href="css/fancybox.css" rel="stylesheet" type="text/css" media="all"/>
+		<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+		<link rel="stylesheet" href="css/jquery.fileupload.css">
+		<!--[if IE]><script type="text/javascript" src="js/ie.js"></script><![endif]-->
+		<!--[if lt IE 9]><link href="css/ie.css" rel="stylesheet" type="text/css" media="all"/><![endif]-->
+	</head>
+	<body>
+		<div class="loader">
+			<h1>Loading</h1>
+		</div>
+		<!-- popup -->
+		<div class="popup-holder">
+			<div id="popup1" class="lightbox">
+				<form class="add-form" action="#">
+					<fieldset>
+						<label for="productName">Type your product name:</label>
+						<input id="productName" type="text">
+						<a href="#" class="close cancelReset">Cancel</a>
+						<a href="#" class="close" id="ProductNameBtn">OK</a>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div class="popup-holder">
+			<div id="popup2" class="lightbox">
+				<form class="add-form" action="#">
+					<fieldset>
+						<label for="BrandName">Type your Brand name:</label>
+						<input id="BrandName" type="text">
+						<a href="#" class="close cancelReset">Cancel</a>
+						<a href="#" class="close" id="BrandNameBtn">OK</a>
+						<!--<button type="button" class="edit" id="BrandNameBtn" href="#">OK</button>-->
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div class="popup-holder">
+			<div id="popup3" class="lightbox">
+				<iframe src="http://aroy.us" style="width:600px; height: 500px">
+					<p>
+						Your browser does not support iframes.
+					</p>
+				</iframe>
+			</div>
+		</div>
+		<!-- main container of all the page elements -->
+		<div id="wrapper">
+			<!-- header of the page -->
+			<header id="header">
+				<!-- top-bar of the page -->
+				<div class="top-bar">
+					<form class="account-form" action="#">
+						<fieldset>
+							<a class="logout"></a>
+							<span class="text">Contact Support</span>
+							<a class="setting-area2" href="mailto:support@aroy.us">support@aroy.us</a>
+						</fieldset>
+					</form>
+
+					<form class="account-form" action="#">
+						<fieldset>
+							<span class="text">User:</span>
+							<a class="name" href="#">User Name</a>
+						</fieldset>
+					</form>
+					<form class="account-form" action="#">
+						<fieldset>
+							<span class="text">Brand:</span>
+							<select class="accountBrand">
+								<option>empty</option>
+							</select>
+						</fieldset>
+					</form>
+					<form class="account-form" action="#">
+						<fieldset>
+							<span class="text">Account:</span>
+							<select class="accountID">
+								<option>empty</option>
+							</select>
+						</fieldset>
+					</form>
+				</div>
+				<!-- links -->
+				<ul class="links">
+					<li>
+						<a href="#">99/99<span>Campaigns
+							<br>
+							(Live/Pending)</span></a>
+					</li>
+					<li>
+						<a href="#">999,999<span>Brand
+							<br>
+							Followers</span></a>
+					</li>
+					<li>
+						<a href="#">999,999<span>Unaddressed
+							<br>
+							Leads</span></a>
+					</li>
+					<li>
+						<a href="#">999,999<span>Recent
+							<br>
+							Leads</span></a>
+					</li>
+					<li>
+						<a href="#">9,999,999<span>Recent
+							<br>
+							Views</span></a>
+					</li>
+					<li>
+						<a href="#">99&#37;<span>Conversion
+							<br>
+							Rate</span></a>
+					</li>
+				</ul>
+			</header>
+			<!-- contain main informative part of the site -->
+			<main id="main" role="main">
+				<!-- left col -->
+				<div class="left-col">
+					<!-- tab-container -->
+					<div class="tab-container">
+						<!-- tabset -->
+						<ul class="tabset">
+							<li>
+								<a class="teb-opener" href="#tab1">Clientele
+								<br>
+								Story</a>
+							</li>
+							<li class="active">
+								<a class="teb-opener" href="#tab2">Campaign
+								<br>
+								Manager</a>
+							</li>
+							<li>
+								<a class="teb-opener" href="#tab3">Campaign
+								<br>
+								Library</a>
+							</li>
+							<li>
+								<a class="teb-opener" href="#tab4">Account
+								<br>
+								Manager</a>
+							</li>
+							<li>
+								<a class="teb-opener" href="#tab5">Brand
+								<br>
+								Manager</a>
+							</li>
+						</ul>
+						<!-- tab-data -->
+						<div class="tab-data tab-content" id="tab1">
+							<div class="dummy-block">
+								<h1>Clientele Story</h1>
+								<p>
+									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+								</p>
+								<p>
+									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+								</p>
+								<p>
+									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+								</p>
+								<p>
+									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+								</p>
+							</div>
+						</div>
+						<!-- tab-data -->
+						<div class="tab-data tab-content" id="tab2">
+							<div class="form-area jcf-scrollable">
+								<h1>Campaign Manager</h1>
+								<!-- compaign form -->
+								<form class="compaign-form" action="" method="post">
+									<div class="top-row">
+										<label>Campaign</label>
+										<select>
+											<option class="create" value="create">Create new campaign</option>
+											<option class="track" value="track">Create fast track campaign</option>
+										</select>
+									</div>
+									<div class="inner-data">
+										<div class="block">
+											<h2>1. Campaign Dates &amp; Market</h2>
+											<span class="sub-txt">Enter Dates &amp; Location</span>
+											<div class="location-row">
+												<div class="box">
+													<label for="sdate">Start Date</label>
+													<input id="sdate" type="text" name="StartDate" placeholder="DD / MM / YYYY">
+												</div>
+												<div class="box">
+													<label for="edate">End Date</label>
+													<input id="edate" type="text" name="EndDate" placeholder="DD / MM / YYYY">
+												</div>
+												<div class="box">
+													<label>Location</label>
+													<select name="Market">
+														<option value="US">United States</option>
+														<option value="US">United States</option>
+														<option value="US">United States</option>
+														<option value="US">United States</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="block">
+											<h2>2. Choose Your Clientele</h2>
+											<span class="sub-txt">Select your clientele for this campaign. Please choose only one.</span>
+											<ul class="clientele">
+												<li>
+													<div class="col">
+														<input name="radio1" id="leads" type="radio">
+														<label for="leads">Leads (Roars)</label>
+													</div>
+													<span class="note">Note: For offers, can use QR codes</span>
+												</li>
+												<li>
+													<div class="col">
+														<input name="radio1" id="followers" type="radio">
+														<label for="followers">Brand Followers</label>
+													</div>
+													<span class="note">Note: For news and events</span>
+												</li>
+												<li>
+													<div class="col">
+														<input name="radio1" id="devices" type="radio">
+														<label for="devices">All Devices - <span>no message</span></label>
+													</div>
+													<span class="note">Note: For campaigns without messaging</span>
+												</li>
+												<li>
+													<div class="col">
+														<input name="radio1" id="devices1" type="radio">
+														<label for="devices1">All Devices - <span>with message</span></label>
+													</div>
+													<span class="note">Note: Only for Aroy Support </span>
+												</li>
+												<li>
+													<div class="col">
+														<input name="radio1" id="test" type="radio">
+														<label for="test">Test Devices</label>
+													</div>
+													<span class="note">Note: Only for Aroy Support </span>
+												</li>
+												<li>
+													<div class="col">
+														<input name="radio1" id="insertions" type="radio">
+														<label for="insertions">Insertions</label>
+														<input type="text" placeholder="99,999,999">
+													</div>
+													<span class="note">Note: Talk to your Rep</span>
+												</li>
+											</ul>
+										</div>
+										<div class="block">
+											<h2>3. Select Images for Campaign</h2>
+											<span class="sub-txt">Select how you want to add images for this campaign</span>
+											<div class="radio-row">
+												<input name="radio2" id="manual" type="radio">
+												<label for="manual">Manual (after you publish the campaign, then add images in Content Manager)</label>
+											</div>
+											<div class="radio-row">
+												<input name="radio2" id="auto" type="radio">
+												<label for="auto">Auto (all images for your products are added automatically, except blocked images)</label>
+											</div>
+										</div>
+										<div class="block">
+											<h2>4. Campaign Message</h2>
+											<span class="sub-txt">Campaign Message</span>
+											<div class="row">
+												<input type="text" name="MessageTitle" placeholder="Title">
+											</div>
+											<div class="row">
+												<input type="text" name="Name" placeholder="^^Brand name">
+											</div>
+											<div class="row">
+												<textarea cols="10" rows="10" name="Message" placeholder="Message"></textarea>
+											</div>
+										</div>
+										<div class="block">
+											<h2>5. Upload a QR Code (Applicable for Roar clientele only)</h2>
+											<span class="sub-txt">Upload your QR code</span>
+											<input id="img-uploader" type="file" data-jcf='{"buttonText": "Browse" }'>
+										</div>
+										<input type="submit" value="Save">
+									</div>
+									<!--<div class="inner-data add">
+									<div class="block">
+									<h2>1. Choose Your Clientele</h2>
+									<span class="sub-txt">Select your clientele for this campaign. Please choose only one.</span>
+									<ul class="clientele">
+									<li>
+									<div class="col">
+									<input name="radio2" id="leads2" type="radio">
+									<label for="leads2">Leads (Roars)</label>
+									</div>
+									<span class="note">Note: For offers, can use QR codes</span>
+									</li>
+									<li>
+									<div class="col">
+									<input name="radio2" id="followers2" type="radio">
+									<label for="followers2">Brand Followers</label>
+									</div>
+									<span class="note">Note: For news and events</span>
+									</li>
+									<li>
+									<div class="col">
+									<input name="radio2" id="devices2" type="radio">
+									<label for="devices2">All Devices - <span>no message</span></label>
+									</div>
+									<span class="note">Note: For campaigns without messaging</span>
+									</li>
+									<li>
+									<div class="col">
+									<input name="radio2" id="devices3" type="radio">
+									<label for="devices3">All Devices - <span>with message</span></label>
+									</div>
+									<span class="note">Note: Only for Aroy Support </span>
+									</li>
+									<li>
+									<div class="col">
+									<input name="radio2" id="test2" type="radio">
+									<label for="test2">Test Devices</label>
+									</div>
+									<span class="note">Note: Only for Aroy Support </span>
+									</li>
+									<li>
+									<div class="col">
+									<input name="radio2" id="insertions2" type="radio">
+									<label for="insertions2">Insertions</label>
+									<input type="text" placeholder="99,999,999">
+									</div>
+									<span class="note">Note: Talk to your Rep</span>
+									</li>
+									</ul>
+									</div>
+									<div class="block">
+									<h2>2. Select Images for Campaign</h2>
+									<span class="sub-txt">Select how you want to add images for this campaign</span>
+									<div class="radio-row">
+									<input name="radio2" id="manua2" type="radio">
+									<label for="manua2">Recent 10 images</label>
+									</div>
+									<div class="radio-row">
+									<input name="radio2" id="auto1" type="radio">
+									<label for="auto1">Auto (all images for your products are added automatically, except blocked images)</label>
+									</div>
+									</div>
+									<div class="block">
+									<h2>3. Campaign Message</h2>
+									<span class="sub-txt">Campaign Message</span>
+									<div class="row">
+									<input type="text" placeholder="Title">
+									</div>
+									<div class="row brand">
+									<input type="text" placeholder="^^Brand name">
+									</div>
+									<div class="row">
+									<textarea cols="10" rows="10" placeholder="Message"></textarea>
+									</div>
+									</div>
+									<div class="block">
+									<h2>4. Upload a QR Code (Applicable for Roar clientele only)</h2>
+									<span class="sub-txt">Upload your QR code</span>
+									<input type="file" data-jcf='{"buttonText": "Browse" }'>
+									</div>
+									<input type="submit" value="Save">
+									</div>-->
+								</form>
+							</div>
+							<div class="preview-area">
+								<h2>Preview</h2>
+								<div class="inner-box">
+									<div class="top-area">
+										<a class="arrow" href="#">arrow</a><strong class="title">Title</strong><span class="brand-name">^^Brand Name</span>
+									</div>
+									<div class="message-area">
+										<p>
+											Message
+										</p>
+									</div>
+									<div class="upload-area"></div>
+									<!-- <img src="images/code.jpg" width="60" height="60" alt="code"> -->
+								</div>
+							</div>
+						</div>
+						<!-- tab-data -->
+						<div class="tab-data add tab-content" id="tab3">
+							<div class="library-block jcf-scrollable">
+								<h1>Campaign Library</h1>
+								<form class="library-form" action="#">
+									<fieldset>
+										<table class="library-table open-close">
+											<tbody>
+												<tr>
+													<th> Active </th>
+													<th> Campaign Name </th>
+												</tr>
+
+											</tbody>
+										</table>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+						<!-- tab-data -->
+						<div class="tab-data tab-content" id="tab4">
+							<div class="account-block">
+								<h1>Account Manager</h1>
+								<span class="sub-txt">Account: ^^Auto</span>
+								<form action="#">
+									<fieldset>
+										<table class="account-table">
+											<tr>
+												<th>User ID</th>
+												<th>Full Name</th>
+												<th class="last">Permission</th>
+											</tr>
+											<tr>
+												<td>^^User ID 01</td>
+												<td>^^Full Name 01</td>
+												<td>
+												<select>
+													<option>^^Brand Owner</option>
+													<option>^^Shared- Read/Write</option>
+													<option>^^Shared- Read only</option>
+													<option>^^Stop Sharing</option>
+												</select></td>
+											</tr>
+											<tr>
+												<td>^^User ID 02</td>
+												<td>^^Full Name 02</td>
+												<td>
+												<select>
+													<option>^^Brand Owner</option>
+													<option>^^Shared- Read/Write</option>
+													<option>^^Shared- Read only</option>
+													<option>^^Stop Sharing</option>
+												</select></td>
+											</tr>
+											<tr>
+												<td>^^User ID 03</td>
+												<td>^^Full Name 03</td>
+												<td>
+												<select>
+													<option>^^Brand Owner</option>
+													<option>^^Shared- Read/Write</option>
+													<option>^^Shared- Read only</option>
+													<option>^^Stop Sharing</option>
+												</select></td>
+											<tr>
+												<td>^^User ID 04</td>
+												<td>^^Full Name 04</td>
+												<td>
+												<select>
+													<option>^^Brand Owner</option>
+													<option>^^Shared- Read/Write</option>
+													<option>^^Shared- Read only</option>
+													<option>^^Stop Sharing</option>
+												</select></td>
+											</tr>
+											<tr>
+												<td>^^User ID 05</td>
+												<td>^^Full Name 05</td>
+												<td>
+												<select>
+													<option>^^Brand Owner</option>
+													<option>^^Shared- Read/Write</option>
+													<option>^^Shared- Read only</option>
+													<option>^^Stop Sharing</option>
+												</select></td>
+											</tr>
+										</table>
+										<div class="row">
+											<div class="search-row">
+												<input class="search" type="search" placeholder="Search for user ID to add">
+											</div>
+											<input type="submit" value="Start Sharing">
+										</div>
+										<span class="txt">If you cannot find the user ID, please enter an email address to invite them now:</span>
+										<div class="row">
+											<input type="email" class="email">
+											<input type="submit" value="Send">
+										</div>
+										<div class="contact-box">
+											<p>
+												Users you invite will default to Read Only permission.
+											</p>
+											<p>
+												Permissions can be changed by the Brand Owner at any time.
+											</p>
+											<p>
+												You can send a request to deactivate your account or report fraudulent activity to: <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#064;&#097;&#114;&#111;&#121;&#046;&#117;&#115;">&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#064;&#097;&#114;&#111;&#121;&#046;&#117;&#115;</a>
+											</p>
+										</div>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+						<div class="tab-data tab-content" id="tab5">
+							<div class="brand-block jcf-scrollable">
+								<h1>Brand Manager</h1>
+								<form class="Post" action="#">
+									<fieldset>
+
+										<table class="brand-table ">
+											<tr>
+												<th>Brand Name</th>
+											</tr>
+											<!--<tr>
+											<td>^^Gucci</td>
+											<td><a class=" brandEdit edit lightbox" href="#popup2">Edit</a></td>
+											</tr>
+											<tr>
+											<td>^^Gucci</td>
+											<td><a class=" brandEdit edit lightbox" href="#popup2">Edit</a></td>
+											</tr>
+											<tr>
+											<td>^^Gucci</td>
+											<td><a class=" brandEdit edit lightbox" href="#popup2">Edit</a></td>
+											</tr>
+											<tr>
+											<td>^^Gucci</td>
+											<td><a class="brandEdit edit lightbox" href="#popup2">Edit</a></td>
+											</tr>-->
+										</table>
+
+										<a class="edit lightbox" id="addBrand" href="#popup2">Add Brand</a>
+										<input type="submit" value="Save">
+
+									</fieldset>
+
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- right col -->
+				<div class="right-col">
+					<!-- tabset -->
+					<ul class="tabset">
+						<li>
+							<a class="teb-opener" href="#tab6">Product
+							<br>
+							Collection</a>
+						</li>
+						<li>
+							<a class="teb-opener" href="#tab7">Upload
+							<br>
+							Content</a>
+						</li>
+						<li class="active">
+							<a class="teb-opener" href="#tab8" >All
+							<br>
+							Content</a>
+						</li>
+						<li>
+							<a class="teb-opener" href="#tab9">Brand
+							<br>
+							Philosophy</a>
+						</li>
+						<li>
+							<a class="teb-opener" href="#tab10">Brand
+							<br>
+							Info</a>
+						</li>
+						<li>
+							<a class="teb-opener" href="#tab11">Micro
+							<br>
+							Blog</a>
+						</li>
+					</ul>
+					<div class="product-block" id="tab6">
+						<form class ="Post"action="#">
+							<fieldset>
+								<h1>Content Manager - Product Collection</h1>
+								<table class="product-table">
+									<tr>
+										<th>Product Name</th>
+										<th></th>
+										<th>Brand Name</th>
+										<th class="last">Collection</th>
+									</tr>
+									<!--<tr>
+									<td>^^Product 01</td>
+									<td><a class="productEdit edit lightbox" href="#popup1">Edit</a></td>
+									<td id="brandSize">
+									<select class="brandOpt">
+									<option>Select Brand</option>
+									</select></td>
+									<td>
+									<select class="collection">
+									<option>Select Collection</option>
+									</select></td>
+									</tr>-->
+								</table>
+								<a class="edit lightbox" id="new-product" href="#popup1">New</a>
+								<input type="submit" value="Save">
+							</fieldset>
+						</form>
+					</div>
+					<div class="product-block" id="tab7">
+						<form class="upload-form" action="#">
+							<fieldset>
+								<h1>Content Manager - Upload Content</h1>
+								<div class="row">
+									<input id="img-uploader"type="file" data-jcf='{"buttonText": "Browse" }'>
+								</div>
+								<div class="row">
+									<label>Product name</label>
+									<select  name="ProductID" id="upload_Product" class="product">
+										<option>empty</option>
+									</select>
+								</div>
+								<div class="row">
+									<div class="box">
+										<div class="inner-row">
+											<label for="username">Username</label>
+											<input id="username" type="text" placeholder="^^Auto">
+										</div>
+										<div class="inner-row">
+											<label for="username">Aspect Ratio</label>
+											<input id="aspectRatio" type="text" placeholder="^^Auto">
+										</div>
+									</div>
+									<div class="box">
+										<div class="inner-row">
+											<label for="date">Date</label>
+											<input id="date" type="text" placeholder="^^Auto">
+										</div>
+										<div class="inner-row">
+											<label for="size">^^File Size</label>
+											<input id="size" type="text" placeholder="^^Auto">
+										</div>
+									</div>
+								</div>
+								<div class="files"></div>
+								<div class="outer">
+									<input type="submit" value="Save">
+								</div>
+							</fieldset>
+						</form>
+					</div>
+					<form class="content-form" id="tab8" action="#">
+						<fieldset>
+							<h1 id="content_header">Content Manager - All Content</h1>
+							<div id="filters" class="button-group">
+								<button class="button is-checked" data-filter="*">
+									show all
+								</button>
+								<button class="button" data-filter=".owned">
+									owned
+								</button>
+								<button class="button" data-filter=".licensed">
+									licensed
+								</button>
+								<button class="button" data-filter=".User">
+									User
+								</button>
+								<button class="button" data-filter=".prepared">
+									prepared
+								</button>
+							</div>
+							<div class="form-row">
+								<label>Collection</label>
+								<select class="collection">
+									<option>Select Collection</option>
+								</select>
+							</div>
+							<div class="form-row">
+								<label>Campaign</label>
+								<select class="campaign">
+									<option>Create new campaign</option>
+								</select>
+							</div>
+							<!-- twocolumns -->
+							<div class="twocolumns">
+								<!-- aside -->
+								<aside class="aside">
+									<div class="jcf-scrollable">
+										<div class="inner-holder">
+											<div class="box">
+												<h2>INFO</h2>
+												<ul>
+													<li>
+														^^Product
+													</li>
+													<li>
+														^^Photo ID
+													</li>
+													<li>
+														^^Username ^^Date
+													</li>
+													<li>
+														^^Aspect Ratio ^^Size
+													</li>
+													<li>
+														<label for="email1">Email this image, type email below:</label>
+														<input id="email1" class="email" type="email">
+														<input type="submit" value="Send">
+													</li>
+												</ul>
+											</div>
+											<div class="box">
+												<h2>CLASSIFY</h2>
+												<ul>
+													<li>
+														Tick the box to change classification
+													</li>
+													<li>
+														<input id="chk10" type="checkbox">
+														<label for="chk10">Request to license</label>
+													</li>
+													<li>
+														<input id="chk11" type="checkbox">
+														<label for="chk11">Block from all campaigns</label>
+													</li>
+													<li>
+														<input id="chk12" type="checkbox">
+														<label for="chk12">Mark for deletion</label>
+													</li>
+												</ul>
+											</div>
+											<div class="box">
+													<fieldset>
+														<h2>CAMPAIGNS ADD / REMOVE</h2>
+														<ul class="add">
+															<li>
+																Tick the box to add / untick to remove content from campaigns
+															</li>
+															<!--<li>
+																<input id="chk13" type="checkbox">
+																<label for="chk13">^^Campaign ID 1</label>
+															</li>-->
+														</ul>
+														<div class="outer">
+															<input class ="campaignImage" type="submit" value="Save">
+														</div>
+													</fieldset>
+											</div>
+										</div>
+									</div>
+								</aside>
+								<div class="thumbnail-block">
+									<ul class="jcf-scrollable">
+
+									</ul>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+					<div class="product-block brand-block2" id="tab9">
+						<h1>Content Manager - Brand Philosophy</h1>
+						<div class="twocolumns">
+							<form action="#" class="instricition-box">
+								<fieldset>
+									<label for="instruction">Instruction : maximum length is 250 characters</label>
+									<textarea id="instruction" name="BrandPhilosophy" cols="10" rows="10" placeholder="Text"></textarea>
+									<input type="hidden" name="BrandID" value="" class="brandID">
+									<input type="submit" value="Save">
+								</fieldset>
+							</form>
+							<div class="preview-area">
+								<div class="inner-box">
+									<div class="top-area">
+										<a class="arrow" href="#">arrow</a><strong class="title">My Brands</strong><span class="brand-name">^^Brand Name</span>
+									</div>
+									<div class="brand-area">
+										<span class="brand-name"> Brand
+											<br>
+											Philosophy </span>
+									</div>
+									<div class="message-area">
+										<p>
+											Text
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="product-block brand-block2" id="tab10">
+						<h1>Content Manager - Brand Info</h1>
+						<div class="twocolumns">
+							<form action="#" class="instricition-box">
+								<fieldset>
+									<label >Instruction : maximum length is 20 characters</label>
+									<input type="text" name = "BrandInfo" placeholder="Brand Info">
+									<label >Instruction : maximum length is 250 characters</label>
+									<textarea id="instruction" name="Description" cols="10" rows="10" placeholder="Text"></textarea>
+									<input type="hidden" name="BrandID" value="" class="brandID">
+
+									<input type="submit" value="Save">
+								</fieldset>
+							</form>
+							<div class="preview-area">
+								<div class="inner-box">
+									<div class="top-area">
+										<a class="arrow" href="#">arrow</a><strong class="title">My Brands</strong><span class="brand-name">^^Brand Name</span>
+									</div>
+									<div class="brand-area">
+										<span class="brand-name"> Brand Info </span>
+									</div>
+									<div class="message-area">
+										<p>
+											Text
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<form action="#" class="micro-block" id="tab11">
+						<fieldset>
+							<table>
+								<tr>
+									<th>Content Manager - Micro Blogs</th>
+									<th>Handle/URL</th>
+									<th class="empty"></th>
+									<th class="last">Active</th>
+								</tr>
+								<tr>
+									<td>
+									<select class="blog_type">
+										<option value="twitter">Twitter</option>
+										<option value ="weibo">Weibo</option>
+									</select></td>
+									<td>
+									<input type="text" class="handle" >
+									</td>
+									<td><a class="edit test lightbox" href="#popup3">Test</a></td>
+									<td>
+									<input type="checkbox">
+									</td>
+								</tr>
+								<tr>
+									<td>
+									<select>
+										<option value="twitter">Twitter</option>
+										<option value ="weibo">Weibo</option>
+									</select></td>
+									<td>
+									<input type="text" class="handle" >
+									</td>
+									<td><a class="edit test lightbox" href="#popup3">Test</a></td>
+									<td>
+									<input type="checkbox">
+									</td>
+								</tr>
+							</table>
+							<input type="submit" value="Save">
+						</fieldset>
+					</form>
+				</div>
+			</main>
+		</div>
+
+		<!-- include jQuery library -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+		<script type="text/javascript">
+			window.jQuery || document.write('<script src="js/lib/jquery-1.11.1.min.js"><\/script>');
+		</script>
+		<script type="text/javascript" src="js/lib/underscore/underscore-min.js"></script>
+		<script type="text/javascript" src="js/lib/backbone/backbone-min.js"></script>
+		<script type="text/javascript" src="js/lib/isotope/isotope.pkgd.min.js"></script>
+		<script type="text/javascript" src="js/lib/imageload/imagesloaded.pkgd.min.js"></script>
+		<script type="text/javascript" src="js/lib/lazyload/jquery.lazyload.js" ></script>
+		<!-- include custom JavaScript --><!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+		<script src="js/lib/jquery.ui.widget.js"></script>
+		<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+		<script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+		<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+		<script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+		<!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+		<script src="js/lib/fileupload/jquery.iframe-transport.js"></script>
+		<!-- The basic File Upload plugin -->
+		<script src="js/lib/fileupload/jquery.fileupload.js"></script>
+		<!-- The File Upload processing plugin -->
+		<script src="js/lib/fileupload/jquery.fileupload-process.js"></script>
+		<!-- The File Upload image preview & resize plugin -->
+		<script src="js/lib/fileupload/jquery.fileupload-image.js"></script>
+		<!-- The File Upload audio preview plugin -->
+		<script src="js/lib/fileupload/jquery.fileupload-audio.js"></script>
+		<!-- The File Upload video preview plugin -->
+		<script src="js/lib/fileupload/jquery.fileupload-video.js"></script>
+		<!-- The File Upload validation plugin -->
+		<script src="js/lib/fileupload/jquery.fileupload-validate.js"></script>
+		<script type="text/javascript" src="js/backbone.main.js"></script>
+		<script type="text/javascript" src="js/contentTabs.main.js"></script>
+		<script type="text/javascript" src="js/image.main.js"></script>
+		<script type="text/javascript" src="js/placeholder.main.js"></script>
+		<script type="text/javascript" src="js/jquery.main.js?v=1.05"></script>
+	</body>
+</html>
