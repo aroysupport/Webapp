@@ -619,15 +619,17 @@
 						<div class="row fileupload-buttonbar">
 							<div class="col-lg-7">
 								<!-- The fileinput-button span is used to style the file input field as button -->
-								<span class="btn btn-success fileinput-button"> 
+								<!-- <span class="btn btn-success fileinput-button"> 
 									<i class="glyphicon glyphicon-plus"></i> 
 									<span>Add files...</span>
-									<!-- <input type="file" name="files[]" multiple> -->
+									<input type="file" name="files[]" multiple>
 								</span>
 								<button type="submit" class="btn btn-primary start">
 									<i class="glyphicon glyphicon-upload"></i>
 									<span>Start upload</span>
-								</button>
+								</button> -->
+								<button class="fileinput-button"> Add</button>
+								<button type="submit" class="btn btn-primary start">Start</button>
 								<!-- The global file processing state -->
 								<span class="fileupload-process"></span>
 							</div>
@@ -653,7 +655,7 @@
 								</div>
 								<div>
 									<p class="size" data-dz-size></p>
-									<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+									<div class="progress active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
 										<div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
 									</div>
 								</div>
@@ -876,35 +878,34 @@
 		<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included --
 		<script src="main_frame/js/lib/jquery.ui.widget.js"></script>-->
 		<!-- The Templates plugin is included to render the upload/download listings -->
-		<script src="main_frame/js/lib/fileupload/tmpl.min.js"></script>
+		<!-- <script src="main_frame/js/lib/fileupload/tmpl.min.js"></script> -->
 		<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-		<script src="main_frame/js/lib/fileupload/load-image.all.min.js"></script>
+		<!-- <script src="main_frame/js/lib/fileupload/load-image.all.min.js"></script> -->
 		<!-- The Canvas to Blob plugin is included for image resizing functionality -->
-		<script src="main_frame/js/lib/fileupload/canvas-to-blob.min.js"></script>
+		<!-- <script src="main_frame/js/lib/fileupload/canvas-to-blob.min.js"></script> -->
 		<!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
 		<script src="main_frame/js/lib/bootstrap.min.js"></script>
 		<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-		<script src="main_frame/js/lib/fileupload/jquery.iframe-transport.js"></script>
+		<!-- <script src="main_frame/js/lib/fileupload/jquery.iframe-transport.js"></script> -->
 		<!-- The basic File Upload plugin -->
-		<script src="main_frame/js/lib/fileupload/jquery.fileupload.js"></script>
+		<!-- <script src="main_frame/js/lib/fileupload/jquery.fileupload.js"></script> -->
 		<!-- The File Upload processing plugin -->
-		<script src="main_frame/js/lib/fileupload/jquery.fileupload-process.js"></script>
+		<!-- <script src="main_frame/js/lib/fileupload/jquery.fileupload-process.js"></script> -->
 		<!-- The File Upload image preview & resize plugin -->
-		<script src="main_frame/js/lib/fileupload/jquery.fileupload-image.js"></script>
+		<!-- <script src="main_frame/js/lib/fileupload/jquery.fileupload-image.js"></script> -->
 		<!-- The File Upload audio preview plugin --
 		<script src="main_frame/js/lib/fileupload/jquery.fileupload-audio.js"></script>-->
 		<!-- The File Upload video preview plugin --
 		<script src="main_frame/js/lib/fileupload/jquery.fileupload-video.js"></script>-->
 		<!-- The File Upload validation plugin -->
-		<script src="main_frame/js/lib/fileupload/jquery.fileupload-validate.js"></script>
-		
-		<script type="text/javascript" src="main_frame/js/tableController.js?v=1.04"></script>
-		<script type="text/javascript" src="main_frame/js/backbone.main.js?v=1.01"></script>
+		<!-- <script src="main_frame/js/lib/fileupload/jquery.fileupload-validate.js"></script> -->
+		<script type="text/javascript" src="main_frame/js/layout.js?v=1.01"></script>
+		<script type="text/javascript" src="main_frame/js/plugin.js?v=1.19"></script>
+		<!-- <script type="text/javascript" src="main_frame/js/backbone.main.js?v=1.01"></script> -->
 		<script type="text/javascript" src="main_frame/js/contentTabs.main.js?v=1.04"></script>
-		<script type="text/javascript" src="main_frame/js/image.main.js?v=1.04"></script>
+		<script type="text/javascript" src="main_frame/js/image.main.js?v=1.05"></script>
 		<script type="text/javascript" src="main_frame/js/placeholder.main.js?v=1.01"></script>
 		<script type="text/javascript" src="main_frame/js/lib/dropzone/dropzone.min.js"></script>
-		<script type="text/javascript" src="main_frame/js/lib/dropzone/dropzone.min.js"></script>
-		<script type="text/javascript" src="main_frame/js/jquery.main.js?v=1.294"></script>
+		<script type="text/javascript" src="main_frame/js/jquery.main.js?v=1.35"></script>
 	</body>
 </html>

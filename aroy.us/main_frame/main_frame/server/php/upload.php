@@ -1,19 +1,40 @@
 <?php
+ini_set('display_startup_errors', 1);
+ ini_set('display_errors', 1);
+ error_reporting(-1);
+#Variables
+// $name=$_FILES['file']['name'];
+// $uploaded_file = $_FILES['file']['tmp_name'];
+// 
+// #python program execution
+// $python='C:\\Python34\\python.exe';
+// $name=str_replace(str_split("\\/!@#$%^&*()`~+,<>;:[]{}|=?"),'_',$name);
+// $cmd=$python.' upload_to_s3-2.py '.str_replace(' ','_',$name).' '.$uploaded_file.' output/ 2>&1';
+// exec($cmd,$output,$return);
+// if(strpos($output,'http://s3-us-west-2.amazonaws.com')==false) {
+	// echo $output;
+// }
+// 
+// #output return 
+// echo "Output 		:";
+// echo print_r($output);
+// 
+// #delete twmp file from server
+// unlink($_FILES['file']['tmp_name']);
 
-$upload_dir = 'myuploads';
+$uploaddir = "C:\inetpub\wwwroot\Web\aroy.us\main_frame\main_frame\server\php\output\\";
+$uploadfile = $uploaddir . basename($_FILES['file']['name']);
 
-if (!empty($_FILES)) {
-
- $tempFile = $_FILES['file']['tmp_name'];
-	echo "FileName: ". $tempFile;
- // using DIRECTORY_SEPARATOR constant is a good practice, it makes your code portable.
- $targetPath = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . $upload_dir . DIRECTORY_SEPARATOR;
- echo "TargetPath: ". $targetPath;
- // Adding timestamp with image's name so that files with same name can be uploaded easily.
- $mainFile = $targetPath.time().'-'. $_FILES['file']['name'];
- echo "MainFile: ". $mainFile;
-
- move_uploaded_file($tempFile,$mainFile);
-
+echo '<pre>';
+if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
+	echo "Address: ".$uploadfile."<br>";
+    echo "File is valid, and was successfully uploaded.\n";
+} else {
+	echo "Address: ".$uploadfile."<br>";
+    echo "Possible file upload attack!\n";
 }
+
+echo 'Here is some more debugging info:';
+print_r($_FILES);
+echo "</pre>";
 ?>

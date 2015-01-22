@@ -16,9 +16,10 @@ Aroy Website:
 			/js
 				main.js					#For US Version
 				main2.js				#For Chinese Version because haven't update the new design yet.
+
 	Subdomain(teaser.aroyinnovation.com):
 		/teaser
-			/1 							#teaser.aroyinnovation.com/1
+			/1 						#teaser.aroyinnovation.com/1
 				/img
 				/index.html
 			/src
@@ -26,9 +27,3 @@ Aroy Website:
 				/img
 				/js
 			/index.php					#Redirect to the latest teaser
-
-Mane Page:
-
-
-
-Mane Page Studio:

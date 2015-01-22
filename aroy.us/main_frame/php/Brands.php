@@ -10,7 +10,7 @@ require_once ('api.class.php');
 
 $global_domain = "beta.aroy.us";
 //$login_url = "http://localhost:8888/aptana/Test/main_frame_index/login";
-$login_url = "http://beta.aroy.us/login/";
+$login_url = "http://accounts.aroy.us/login/";
 
 if(isset($_COOKIE["aroy"])){
 	session_id($_COOKIE["aroy"]);

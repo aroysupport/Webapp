@@ -2,7 +2,7 @@ function getImage(currentBrandID) {
 
 	//function image(currentBrandID) {
 	//var url = "http://localhost:8888/php/Brands.php?method=check";
-	var url = "http://" + global_domain + "/php/Brands.php?method=image&id=" + cookieID + "&brand=" + currentBrandID;
+	var url = "http://" + global_domain + "/php/Brands.php?method=image&brand=" + currentBrandID;
 	str = "";
 	console.log("URL: ", url);
 	$.ajax({

@@ -75,9 +75,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 }
-
 /************************/
-
 #floatingCirclesG {
 	position: relative;
 	width: 128px;
@@ -88,7 +86,6 @@ body {
 	-o-transform: scale(0.6);
 	transform: scale(0.6);
 }
-
 .f_circleG {
 	position: absolute;
 	background-color: #4A0909;
@@ -120,7 +117,6 @@ body {
 	animation-iteration-count: infinite;
 	animation-direction: linear;
 }
-
 #frotateG_01 {
 	left: 0;
 	top: 52px;
@@ -130,7 +126,6 @@ body {
 	-o-animation-delay: 0.27s;
 	animation-delay: 0.27s;
 }
-
 #frotateG_02 {
 	left: 15px;
 	top: 15px;
@@ -140,7 +135,6 @@ body {
 	-o-animation-delay: 0.36s;
 	animation-delay: 0.36s;
 }
-
 #frotateG_03 {
 	left: 52px;
 	top: 0;
@@ -150,7 +144,6 @@ body {
 	-o-animation-delay: 0.45s;
 	animation-delay: 0.45s;
 }
-
 #frotateG_04 {
 	right: 15px;
 	top: 15px;
@@ -160,7 +153,6 @@ body {
 	-o-animation-delay: 0.54s;
 	animation-delay: 0.54s;
 }
-
 #frotateG_05 {
 	right: 0;
 	top: 52px;
@@ -170,7 +162,6 @@ body {
 	-o-animation-delay: 0.63s;
 	animation-delay: 0.63s;
 }
-
 #frotateG_06 {
 	right: 15px;
 	bottom: 15px;
@@ -180,7 +171,6 @@ body {
 	-o-animation-delay: 0.72s;
 	animation-delay: 0.72s;
 }
-
 #frotateG_07 {
 	left: 52px;
 	bottom: 0;
@@ -190,7 +180,6 @@ body {
 	-o-animation-delay: 0.81s;
 	animation-delay: 0.81s;
 }
-
 #frotateG_08 {
 	left: 15px;
 	bottom: 15px;
@@ -200,52 +189,36 @@ body {
 	-o-animation-delay: 0.9s;
 	animation-delay: 0.9s;
 }
-
 @-moz-keyframes f_fadeG{
 0%{
 background-color:#E6E3E5}
-
 100%{
 background-color:#4A0909}
-
 }
-
 @-webkit-keyframes f_fadeG{
 0%{
 background-color:#E6E3E5}
-
 100%{
 background-color:#4A0909}
-
 }
-
 @-ms-keyframes f_fadeG{
 0%{
 background-color:#E6E3E5}
-
 100%{
 background-color:#4A0909}
-
 }
-
 @-o-keyframes f_fadeG{
 0%{
 background-color:#E6E3E5}
-
 100%{
 background-color:#4A0909}
-
 }
-
 @keyframes f_fadeG{
 0%{
 background-color:#E6E3E5}
-
 100%{
 background-color:#4A0909}
-
 }
-
 .load {
 	position: fixed;
 	left: 0px;
@@ -260,7 +233,6 @@ background-color:#4A0909}
 /*.load h1{
  color:white;
  font-size:xx-large;
-
  }*/
 ::-webkit-input-placeholder {
 	color: #a3a3a3;
@@ -382,7 +354,6 @@ background-color:#4A0909}
 .name:hover {
 	text-decoration: underline;
 }
-
 .upload-area2 {
 	width: 200px;
 	height: 200px;
@@ -414,7 +385,6 @@ background-color:#4A0909}
 	text-transform: none;
 	text-decoration: none;
 }
-
 .upload-area {
 	width: 56px;
 	height: 56px;
@@ -461,7 +431,6 @@ background-color:#4A0909}
 .logout:hover {
 	opacity: 0.8;
 }
-
 .setting-area2 {
 	text-decoration: none;
 	text-indent: -9999px;
@@ -721,7 +690,6 @@ ul.campaign-nav {
 	border-right: none;
 }
 .campaign-nav li:last-child {
-
 }
 .campaign-nav li.active {
 	background: #ffffff;
@@ -739,7 +707,6 @@ ul.campaign-nav {
 	color: #000000;
 }
 /*style for campaign menu end*/
-
 .left-col {
 	float: left;
 	width: 54.2%;
@@ -1199,7 +1166,6 @@ ul.campaign-nav {
 .account-block p a:hover {
 	text-decoration: underline;
 }
-
 .brand-block {
 	overflow: hidden;
 	padding: 16px 25px;
@@ -1249,7 +1215,6 @@ ul.campaign-nav {
 	width: 50px;
 	height: 18px;
 }
-
 .product-block {
 	overflow: hidden;
 	padding: 0 25px;
@@ -1543,7 +1508,6 @@ ul.campaign-nav {
 	-webkit-border-radius: 5px;
 	border: 0px;
 }
-
 .edit.new {
 	width: 64px;
 }
@@ -1804,7 +1768,6 @@ ul.campaign-nav {
 	border-radius: 2px;
 	-webkit-border-radius: 2px;
 }
-
 #filters .button {
 	display: block;
 	padding: 0;
@@ -1825,7 +1788,6 @@ ul.campaign-nav {
 	margin-right: 5px;
 	outline: 0;
 }
-
 .thumbnail-block {
 	overflow: hidden;
 	width: 660px;
@@ -2035,7 +1997,6 @@ ul.campaign-nav {
 	margin-top: 2px;
 }
 .architecture-content select {
-
 }
 #brandSize .jcf-select {
 	width: 135px;
@@ -2346,7 +2307,6 @@ textarea, .password, .email, input[type="email"], input[type="password"], input[
 .upload-block .thumbnail {
 	margin-bottom: 40px;
 }
-
 /*style for content page end*/
 /*style for Fast Track Campaign*/
 .product-block.campaign-block {
