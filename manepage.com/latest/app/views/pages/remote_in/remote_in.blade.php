@@ -55,16 +55,18 @@
 			</div>
 		</div> -->
 		
-		<div class="wrapper">
+		<div class="wrapper" style="margin-top: 145px;">
 			<div class="wrapper-container">
 				<div class="content">
 					<div id="remote_home_page">
 						<img src="{{URL::asset('img/Roar_Home.png')}}" alt="Mane Logo" />
 						<form method="post" action="#">
+							<div id="error-message" style="color: #FE0505; margin-bottom: 19px; font-size: 19px; width: 458px; margin-top: 0px;"></div>
 							<div class="hint-text">
-								<input type="input" placeholder="Device Number" name="deviceNumber" />
+								<input type="input" id="device-number" placeholder="Device Number" name="deviceNumber" />
 								<a href="#">What is this?</a>
 							</div>
+							
 							<input type="checkbox">
 							<label>Store an safe, anonymous cookie
 								<br />

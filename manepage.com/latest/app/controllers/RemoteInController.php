@@ -1,6 +1,9 @@
 <?php
 
 class RemoteInController extends BaseController {
+	const base = "http://54.68.229.64/Service1.svc/";
+
+	
 
 	/**
 	 * Display a listing of the resource.
@@ -82,8 +85,31 @@ class RemoteInController extends BaseController {
 		//
 	}
 
+
 	public function login() {
-		$setting_name = Input::get('devicesId' );
-		return $setting_name;
+		$devices_id = Input::get('devicesId');
+		$json = $this -> get('getDesktopLogin/' . $devices_id);
+
+		foreach ($json as $k => $value) {
+			$object = $value[0];
+			if ($object['LoginCodeStatus'] == "Expired") {
+				return 'The device number you entered is incorrect.';
+				// return 1;
+			}
+			else {
+				return 1;
+			}
+		}
+	}
+
+	private function get($method) {
+		$url = self::base . $method;
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$raw_data = curl_exec($ch);
+		$data = json_decode($raw_data, true);
+		return $data;
 	}
 }

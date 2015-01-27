@@ -3662,16 +3662,22 @@ ManePage.remoteIn = {
 
 	_login: function () {
 		var url = this.domain;
-		var data ={
-			devicesId: 'Hi'
+		var data = {
+			devicesId: $("#device-number").val()
 		};
 
 		$.ajax({
-			type : "POST",
-			url : url,
-			data : data
+			type: "POST",
+			url: url,
+			data: data
 		}).done(function(respones) {
-			alert(respones)
+			console.log(respones);
+			if(respones == true) {
+				window.location = "/remote_in_upload_artwork_upload";
+			}
+			else {
+				$("#error-message").html(respones);
+			}
 		});
 	}
 };

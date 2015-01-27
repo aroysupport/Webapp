@@ -77,10 +77,6 @@ Route::get('/remote_in', array(
 	'uses' => 'HomeController@remote_in'
 ));
 
-Route::post('remote_in_login', array(
-	'uses' => 'HomeController@remote_in_login'
-));
-
 Route::post('remote_in/login', array(
 	'uses' => 'RemoteInController@login'
 ));
