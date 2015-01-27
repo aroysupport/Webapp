@@ -6,7 +6,7 @@
 		<title>Aroy Innovation</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!--link style-->
-		<link rel="stylesheet" type="text/css" href="../landing_page/css/jcf.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="../landing_page/css/jcf.css" />
 		<link rel="stylesheet" type="text/css" href="../landing_page/css/fancybox.css" />
 		<link rel="stylesheet" type="text/css" href="../landing_page/css/jssort.css" />
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -27,7 +27,29 @@
 		<script type="text/javascript" src="../landing_page/js/jquery.main.js"></script>
 		<script type="text/javascript" src="../landing_page/js/slider-master/js/jssor.slider.min.js"></script>
 		<script type="text/javascript" src="../landing_page/js/slider.js"></script>
-		<script type="text/javascript" src="../landing_page/js/main.js?version=1.04"></script>
+		<script type="text/javascript" src="../landing_page/js/main.js?version=1.04"></script> -->
+		{{ HTML::style('css/jcf.css') }}
+		{{ HTML::style('css/fancybox.css') }}
+		{{ HTML::style('css/jssort.css') }}
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		{{ HTML::style('css/slider.css') }}
+		{{ HTML::style('css/main.css?version=1.10') }}
+
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+		<script type="text/javascript">
+		window.jQuery || document.write('<script src="{{ url('js/jquery-1.11.1.min.js') }}"><\/script>');
+		</script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		{{ HTML::script('js/lib/isotope/isotope.pkgd.min.js') }}
+		{{ HTML::script('js/lib/imageload/imagesloaded.pkgd.min.js') }}
+		{{ HTML::script('js/lib/fileupload/jquery.fileupload.js') }}
+		{{ HTML::script('js/contentTabs.main.js') }}
+		{{ HTML::script('js/image.main.js') }}
+		{{ HTML::script('js/jquery.main.js') }}
+		{{ HTML::script('js/slider-master/js/jssor.slider.min.js') }}
+		{{ HTML::script('js/slider.js') }}
+		{{ HTML::script('js/main.js?version=1.04') }}
 	</head>
 	<!-- end Head -->
 	<!-- Body Start-->
@@ -130,4 +152,3 @@
 		<!--content End-->
 	</body>
 </html>
-

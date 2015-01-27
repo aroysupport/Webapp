@@ -1,5 +1,5 @@
 	//var AWS = "http://manepage.com";
-	var local = "http://manepage.com/";
+	var local = "http://localhost:8000";
 	//var domain = AWS;
 	var domain = local;
 	
@@ -7,13 +7,13 @@
 $(function(){
 search();
 activeNav();
-$.getJSON(domain+"/php/login.php?method=check", function(resopnse) {
-		if(resopnse["expired"]!=undefined){
-			alert(resopnse["expired"]);
-			window.stop();
-			window.location.replace("http://manepage.com/login");
-		}
-	});
+// $.getJSON(domain+"/php/login.php?method=check", function(resopnse) {
+// 		if(resopnse["expired"]!=undefined){
+// 			alert(resopnse["expired"]);
+// 			window.stop();
+// 			window.location.replace("http://manepage.com/login");
+// 		}
+// 	});
 });
 
 function search() {

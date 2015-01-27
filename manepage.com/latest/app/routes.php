@@ -66,63 +66,82 @@ Route::get('/resources', array(
 	'uses' => 'HomeController@resources'
 ));
 Route::group(array('domain' => '{beta}.manepage.com'), function() {
-
-    Route::get('/{id}', function($id) {
-        // ...
-        return Redirect::to('beta.manepage.com/'.$id);
-    });
-
+  Route::get('/{id}', function($id) {
+    // ...
+    return Redirect::to('beta.manepage.com/'.$id);
+  });
 });
+
+Route::get('/remote_in', array(
+	'as' => 'remote_in',
+	'uses' => 'HomeController@remote_in'
+));
+
+Route::post('remote_in_login', array(
+	'uses' => 'HomeController@remote_in_login'
+));
+
+Route::post('remote_in/login', array(
+	'uses' => 'RemoteInController@login'
+));
+
+// Route::get('/remote_in_brand_page', array(
+// 	'as' => 'remote_in_brand_page',
+// 	'uses' => 'HomeController@remote_in_brand_page'
+// ));
+
+// Route::get('/remote_in_brand_content', array(
+// 	'as' => 'remote_in_brand_content',
+// 	'uses' => 'HomeController@remote_in_brand_content'
+// ));
+
+// Route::get('/remote_in_collection_page', array(
+// 	'as' => 'remote_in_collection_page',
+// 	'uses' => 'HomeController@remote_in_collection_page'
+// ));
+
+// Route::post('remote_in_collection_page', array(
+// 	'as' => 'remote_in_post',
+// 	'uses' => 'HomeController@remote_in_post'
+// ));
+
+// Route::get('remote_in_collection_content', array(
+// 	'as' => 'remote_in_collection_content',
+// 	'uses' => 'HomeController@remote_in_collection_content'
+// ));
+
+// Route::get('remote_in_info', array(
+// 	'as' => 'remote_in_info',
+// 	'uses' => 'HomeController@remote_in_info'
+// ));
+
+// Route::get('remote_in_upload_artwork_agree', array(
+// 	'as' => 'remote_in_upload_artwork_agree',
+// 	'uses' => 'HomeController@remote_in_upload_artwork_agree'
+// ));
+
+// Route::post('remote_in_upload_artwork_agree', array(
+// 	'as' => 'remote_in_upload_artwork_agree_post',
+// 	'uses' => 'HomeController@remote_in_upload_artwork_agree_post'
+// ));
+
+Route::get('remote_in_upload_artwork_upload', array(
+	'as' => 'remote_in_upload_artwork_upload',
+	'uses' => 'HomeController@remote_in_upload_artwork_upload'
+));
+
+// Route::get('remote_in_upload_artwork_tag', array(
+// 	'as' => 'remote_in_upload_artwork_tag',
+// 	'uses' => 'HomeController@remote_in_upload_artwork_tag'
+// ));
+
+// Route::get('remote_in_upload_artwork_information', array(
+// 	'as' => 'remote_in_upload_artwork_information',
+// 	'uses' => 'HomeController@remote_in_upload_artwork_information'
+// ));
 
 Route::get('/{brandName}',  array(
 	'as' => 'brand_content',
-	'uses' => 'HomeController@showBrand'));
+	'uses' => 'HomeController@showBrand'
+));
 
-// Route::get('remote_in', array(
-	// 'as' => 'remote_in',
-	// 'uses' => 'HomeController@remote_in'
-// ));
-// Route::get('remote_in/brand_page', array(
-	// 'as' => 'remote_in_brand_page',
-	// 'uses' => 'HomeController@remote_in_brand_page'
-// ));
-// Route::get('remote_in/brand_content', array(
-	// 'as' => 'remote_in_brand_content',
-	// 'uses' => 'HomeController@remote_in_brand_content'
-// ));
-// Route::get('remote_in/collection_page', array(
-	// 'as' => 'remote_in_collection_page',
-	// 'uses' => 'HomeController@remote_in_collection_page'
-// ));
-// Route::post('remote_in/collection_page', array(
-	// 'as' => 'remote_in_post',
-	// 'uses' => 'HomeController@remote_in_post'
-// ));
-// Route::get('remote_in/collection_content', array(
-	// 'as' => 'remote_in_collection_content',
-	// 'uses' => 'HomeController@remote_in_collection_content'
-// ));
-// Route::get('remote_in/info', array(
-	// 'as' => 'remote_in_info',
-	// 'uses' => 'HomeController@remote_in_info'
-// ));
-// Route::get('remote_in/upload_artwork_agree', array(
-	// 'as' => 'remote_in_upload_artwork_agree',
-	// 'uses' => 'HomeController@remote_in_upload_artwork_agree'
-// ));
-// Route::post('remote_in/upload_artwork_agree', array(
-	// 'as' => 'remote_in_upload_artwork_agree_post',
-	// 'uses' => 'HomeController@remote_in_upload_artwork_agree_post'
-// ));
-// Route::get('remote_in/upload_artwork_upload', array(
-	// 'as' => 'remote_in_upload_artwork_upload',
-	// 'uses' => 'HomeController@remote_in_upload_artwork_upload'
-// ));
-// Route::get('remote_in/upload_artwork_tag', array(
-	// 'as' => 'remote_in_upload_artwork_tag',
-	// 'uses' => 'HomeController@remote_in_upload_artwork_tag'
-// ));
-// Route::get('remote_in/upload_artwork_information', array(
-	// 'as' => 'remote_in_upload_artwork_information',
-	// 'uses' => 'HomeController@remote_in_upload_artwork_information'
-// ));

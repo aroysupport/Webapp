@@ -29,10 +29,9 @@
 		{{ HTML::script('js/slider.js') }}
 		{{ HTML::script('js/main.js?version=1.04.js') }}
 	</head>
-	<!-- end Head -->
-	<!-- Body Start-->
+	
 	<body>
-		<!-- Modal -->
+		
 		<div class="popup-holder">
 			<div id="disconnect_popup" class="lightbox popup-disconnect">
 				<form class="add-form popup-disconnect" action="#">
@@ -44,7 +43,7 @@
 				</form>
 			</div>
 		</div>
-		<!-- popup end -->
+		
 		<div class="wrapper">
 			<div class="wrapper-container">
 				<div class="main_page">
@@ -69,7 +68,7 @@
 				</div>
 			</div>
 		</div>
-		<!--content End-->
+		
 	</body>
 </html>
 

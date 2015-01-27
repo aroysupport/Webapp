@@ -147,13 +147,11 @@ class HomeController extends BaseController {
 		$this->getAllBrands();
 		$json = $this -> getBrandArr();
 		return View::make('pages.brand_page.index', array('json' => $json));
-
 	}
 
 	public function collection_page() {
 		$json = $this -> getCollection();
 		return View::make('pages.collection_page.index', array('json' => $json));
-
 	}
 	public function showBrand($brandName) {
 		$brand = $this -> getBrandArr();

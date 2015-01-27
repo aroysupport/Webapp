@@ -359,7 +359,7 @@ ul#li-second {
  background-position: 1px -7px;
  }
  /*checkbox style end*/
-#remote_home_page > form > input[type=submit] {
+#remote_home_page > form > input[type=submit],  #remote_home_page > form > input[type=button]{
 	background: #ffffff;
 	color: #000000;
 	font-family: AvenirNext-Medium;

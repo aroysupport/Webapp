@@ -24,24 +24,24 @@
 		</script>
 		<script>
 			// function getCookie(cname) {
-// 				var name = cname + "=";
-// 				var ca = document.cookie.split(';');
-// 				for (var i = 0; i < ca.length; i++) {
-// 					var c = ca[i];
-// 					while (c.charAt(0) == ' ')
-// 					c = c.substring(1);
-// 					if (c.indexOf(name) != -1)
-// 						return c.substring(name.length, c.length);
-// 				}
-// 				return "";
-// 			}
-// 
-// 			if(getCookie("manepage")==""){
-// 				window.stop();
-// 				window.location.replace("http://manepage.com/login");
-// 			}else{
-// 				console.log("Passed");
-// 			}
+			// 	var name = cname + "=";
+			// 	var ca = document.cookie.split(';');
+			// 	for (var i = 0; i < ca.length; i++) {
+			// 		var c = ca[i];
+			// 		while (c.charAt(0) == ' ')
+			// 		c = c.substring(1);
+			// 		if (c.indexOf(name) != -1)
+			// 			return c.substring(name.length, c.length);
+			// 	}
+			// 	return "";
+			// }
+
+			// if(getCookie("manepage")==""){
+			// 	window.stop();
+			// 	window.location.replace("http://manepage.com/login");
+			// }else{
+			// 	console.log("Passed");
+			// }
 		</script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		{{ HTML::script('js/lib/jquery-ui/jquery-ui.min.js') }}
