@@ -67,18 +67,20 @@ Route::get('/resources', array(
 ));
 Route::group(array('domain' => '{beta}.manepage.com'), function() {
   Route::get('/{id}', function($id) {
-    // ...
     return Redirect::to('beta.manepage.com/'.$id);
   });
 });
 
-Route::get('/remote_in', array(
-	'as' => 'remote_in',
-	'uses' => 'HomeController@remote_in'
+Route::get('remote_in', array(
+	'uses' => 'RemoteInController@index'
 ));
 
-Route::post('remote_in/login', array(
+Route::post('remote_in_login', array(
 	'uses' => 'RemoteInController@login'
+));
+
+Route::get('remote_in_upload_artwork_upload', array(
+	'uses' => 'RemoteInController@remote_in_upload_artwork_upload'
 ));
 
 // Route::get('/remote_in_brand_page', array(
@@ -120,11 +122,6 @@ Route::post('remote_in/login', array(
 // 	'as' => 'remote_in_upload_artwork_agree_post',
 // 	'uses' => 'HomeController@remote_in_upload_artwork_agree_post'
 // ));
-
-Route::get('remote_in_upload_artwork_upload', array(
-	'as' => 'remote_in_upload_artwork_upload',
-	'uses' => 'HomeController@remote_in_upload_artwork_upload'
-));
 
 // Route::get('remote_in_upload_artwork_tag', array(
 // 	'as' => 'remote_in_upload_artwork_tag',

@@ -3651,7 +3651,7 @@ function bindReady(handler) {
 var ManePage = {};
 
 ManePage.remoteIn = {
-	domain: "remote_in/login",
+	domain: "remote_in_login",
 	login: function() {
 		var self = this;
 
@@ -3661,7 +3661,13 @@ ManePage.remoteIn = {
 	},
 
 	_login: function () {
-		var url = this.domain;
+		var url = this.domain,
+				devicesId = $("#device-number").val();
+		if (devicesId == "") {
+			$("#error-message").html("Please enter your devices number.");
+			return;
+		}
+
 		var data = {
 			devicesId: $("#device-number").val()
 		};

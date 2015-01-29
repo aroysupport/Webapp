@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<!-- Head Start-->
@@ -54,6 +55,7 @@
 	<!-- end Head -->
 	<!-- Body Start-->
 	<body>
+		{{$now}}
 		<!-- Modal -->
 		<div class="popup-holder">
 			<div id="disconnect_popup" class="lightbox popup-disconnect">

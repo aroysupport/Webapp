@@ -1,7 +1,6 @@
 <?php
 
 class HomeController extends BaseController {
-
 	const base = "http://54.68.229.64/Service1.svc/";
 	//User ID
 	private $brand = array();
@@ -112,7 +111,7 @@ class HomeController extends BaseController {
 		}
 	}
 	public function check(){
-		if( Session::has('key')){
+		if(Session::has('key')){
 	   		return Redirect::to($request->path());
 	   }else{
 	   		return Redirect::to('/login');
@@ -187,45 +186,4 @@ class HomeController extends BaseController {
 	public function resources() {
 		return View::make('pages.resources.index');
 	}
-
-	public function remote_in() {
-		return View::make('pages.remote_in.remote_in');
-	}
-
-	public function remote_in_brand_page() {
-		return View::make('pages.remote_in.brand_page');
-	}
-
-	public function remote_in_brand_content() {
-		return View::make('pages.remote_in.brand_content');
-	}
-
-	public function remote_in_collection_page() {
-		return View::make('pages.remote_in.collection_page');
-	}
-
-	public function remote_in_collection_content() {
-		return View::make('pages.remote_in.collection_content');
-	}
-
-	public function remote_in_info() {
-		return View::make('pages.remote_in.info');
-	}
-
-	public function remote_in_upload_artwork_agree() {
-		return View::make('pages.remote_in.upload_artwork_agree');
-	}
-
-	public function remote_in_upload_artwork_upload() {
-		return View::make('pages.remote_in.upload_artwork_upload');
-	}
-
-	public function remote_in_upload_artwork_tag() {
-		return View::make('pages.remote_in.upload_artwork_tag');
-	}
-
-	public function remote_in_upload_artwork_information() {
-		return View::make('pages.remote_in.upload_artwork_information');
-	}
-
 }
