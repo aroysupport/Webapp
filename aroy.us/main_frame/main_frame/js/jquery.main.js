@@ -1,23 +1,15 @@
 ﻿/*-------------------------------Variables-----------------------------------------------*/
-//var cookieID;
-//var currentAccountID;
-//var currentBrandID;
-//var currentBrandName;
 var ajaxFlag;
-//var initFlag = true;
-//var updated_array = new Array();
 var compaignImage;
-//var compaignImage_list = new Array();
 if (getURLParameter('id')) {
 	cookieID = getURLParameter('id');
 }
 var global_domain = "accounts.aroy.us/";
 var currentPage;
-//var global_domain = "aroy.us";
-
 /*-------------------------------Main-----------------------------------------------*/
 $(function() {
 	/*------------Init-----------*/
+
 	ajaxCount();
 	getAccountInfo();
 	tableController.bind();
@@ -32,19 +24,206 @@ $(function() {
 
 	logout();
 
+	//*------------Dynatable plugin-----------*/
+	$('#audience-table').dynatable({
+		dataset : {
+			ajax : true,
+			ajaxUrl : 'main_frame/js/audience.json',
+			ajaxOnLoad : true,
+			records : []
+		},
+		features : {
+			paginate : false,
+			recordCount : false,
+			sorting : false,
+			search : false
+		}
+	});
+
+	var data1 = {
+		labels : ["2015/01/01 ", "2015/01/02", "2015/01/03", "2015/01/04", "2015/01/05", "2015/01/06 ", "2015/01/07", "2015/01/08 ", "2015/01/09 ", "2015/01/10 ", "2015/01/11", "2015/01/12", "2015/01/13", "2015/01/014", "2015/01/15"],
+		datasets : [{
+			label : "My First dataset",
+			fillColor : "rgba(253,147,37,1)",
+			strokeColor : "rgba(220,220,220,0.8)",
+			highlightFill : "rgba(220,220,220,0.75)",
+			highlightStroke : "rgba(220,220,220,1)",
+			data : [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 120, 120, 120]
+		}]
+	};
+	var data2 = {
+		labels : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+		datasets : [{
+			label : "My First dataset",
+			fillColor : "rgba(253,147,37,1)",
+			strokeColor : "rgba(220,220,220,0.8)",
+			highlightFill : "rgba(220,220,220,0.75)",
+			highlightStroke : "rgba(220,220,220,1)",
+			data : [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
+		}]
+	};
+	var data3 = {
+		labels : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+		datasets : [{
+			label : "My First dataset",
+			fillColor : "rgba(253,147,37,1)",
+			strokeColor : "rgba(220,220,220,0.8)",
+			highlightFill : "rgba(220,220,220,0.75)",
+			highlightStroke : "rgba(220,220,220,1)",
+			data : [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
+		}]
+	};
+	var data4 = {
+		labels : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+		datasets : [{
+			label : "My First dataset",
+			fillColor : "rgba(253,147,37,1)",
+			strokeColor : "rgba(220,220,220,0.8)",
+			highlightFill : "rgba(220,220,220,0.75)",
+			highlightStroke : "rgba(220,220,220,1)",
+			data : [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
+		}]
+	};
+	var data5 = [{
+		value : 300,
+		color : "#F7464A",
+		highlight : "#FF5A5E",
+		label : "Red"
+	}, {
+		value : 50,
+		color : "#46BFBD",
+		highlight : "#5AD3D1",
+		label : "Green"
+	}, {
+		value : 100,
+		color : "#FDB45C",
+		highlight : "#FFC870",
+		label : "Yellow"
+	}];
+	
+	var data6 = [{
+		value : 300,
+		color : "#F7464A",
+		highlight : "#FF5A5E",
+		label : "Red"
+	}, {
+		value : 50,
+		color : "#46BFBD",
+		highlight : "#5AD3D1",
+		label : "Green"
+	}, {
+		value : 100,
+		color : "#FDB45C",
+		highlight : "#FFC870",
+		label : "Yellow"
+	}]
+	var ctx1 = $("#myChart1").get(0).getContext("2d");
+	var ctx2 = $("#myChart2").get(0).getContext("2d");
+	var ctx3 = $("#myChart3").get(0).getContext("2d");
+	var ctx4 = $("#myChart4").get(0).getContext("2d");
+	var ctx5 = $("#myChart5").get(0).getContext("2d");
+	var ctx6 = $("#myChart6").get(0).getContext("2d");
+	var options = {
+		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+		scaleBeginAtZero : true,
+
+		//Boolean - Whether grid lines are shown across the chart
+		scaleShowGridLines : true,
+
+		//String - Colour of the grid lines
+		scaleGridLineColor : "rgba(0,0,0,.05)",
+
+		//Number - Width of the grid lines
+		scaleGridLineWidth : 1,
+
+		//Boolean - Whether to show horizontal lines (except X axis)
+		scaleShowHorizontalLines : true,
+
+		//Boolean - Whether to show vertical lines (except Y axis)
+		scaleShowVerticalLines : true,
+
+		//Boolean - If there is a stroke on each bar
+		barShowStroke : true,
+
+		//Number - Pixel width of the bar stroke
+		barStrokeWidth : 1,
+
+		//Number - Spacing between each of the X value sets
+		barValueSpacing : 1,
+
+		//Number - Spacing between data sets within X values
+		barDatasetSpacing : 1,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+	};
+
+	var options2 = {
+		//Boolean - Whether we should show a stroke on each segment
+		segmentShowStroke : true,
+
+		//String - The colour of each segment stroke
+		segmentStrokeColor : "#fff",
+
+		//Number - The width of each segment stroke
+		segmentStrokeWidth : 2,
+
+		//Number - The percentage of the chart that we cut out of the middle
+		percentageInnerCutout : 0, // This is 0 for Pie charts
+
+		//Number - Amount of animation steps
+		animationSteps : 100,
+
+		//String - Animation easing effect
+		animationEasing : "easeOutBounce",
+
+		//Boolean - Whether we animate the rotation of the Doughnut
+		animateRotate : true,
+
+		//Boolean - Whether we animate scaling the Doughnut from the centre
+		animateScale : false,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+
+	};
+	var myBarChart1 = new Chart(ctx1).Bar(data1, options);
+	var myBarChart2 = new Chart(ctx2).Bar(data2, options);
+	var myBarChart3 = new Chart(ctx3).Bar(data3, options);
+	var myBarChart4 = new Chart(ctx4).Bar(data4, options);
+
+	var myPieChart1 = new Chart(ctx5).Pie(data5, options2);
+	var myPieChart2 = new Chart(ctx6).Pie(data6, options2);
+
+	showimageupload();
+	uploader();
 });
+
+/*-------------------------------hide show for upload page------------------------------*/
+function showimageupload() {
+	//click on image     Click here to upload new Images
+	$("#hide-campaign-nav").bind("click", function(event) {
+		event.preventDefault();
+		$("#special-image a").click();
+	});
+}
+
 /*-------------------------------Main End-----------------------------------------------*/
 
 function style() {
+	debug.msg("Sytle()", "				Called");
 	initDatepicker();
-	initOpenClose();
 	initLightbox();
 	initTabs();
-	initCustomForms();
-	console.log("initAddClasses()");
-	initAddClasses();
 	initPopups();
 	jQuery('input, textarea').placeholder();
+	// $('select').select2();
+	// initOpenClose();
+	//initCustomForms();
+	//console.log("initAddClasses()");
+	// initAddClasses();
+
 }
 
 function ajaxCount() {
@@ -58,6 +237,8 @@ function ajaxCount() {
 		counter--;
 		current.Brand.set($(".accountBrand").val());
 		if (counter == 0) {
+			// lightboxReload();
+			// initCustomForms();
 			style();
 			$(".load").fadeOut(500);
 			ajaxFlag = false;
@@ -70,7 +251,7 @@ function ajaxCount() {
 function initData() {
 	var url = "http://" + global_domain + "/php/Brands.php?method=init";
 	str = "";
-	console.log("URL: ", url);
+	//console.log("URL: ", url);
 	$.ajax({
 		type : "GET",
 		url : url
@@ -84,7 +265,7 @@ function initData() {
 function getAccountInfo() {
 	var url = "http://" + global_domain + "/php/Brands.php?method=check";
 	str = "";
-	console.log("URL: ", url);
+	//console.log("URL: ", url);
 	$.ajax({
 		type : "GET",
 		url : url,
@@ -119,10 +300,10 @@ function getCampaignImage() {
 }
 
 function is_containImage(imageID) {
-	console.log("Image- > ", imageID);
+	//console.log("Image- > ", imageID);
 	$.each(compaignImage, function(key, val) {
 		if ($.inArray(imageID, val) > -1) {
-			console.log("		Campaign -> ", key);
+			//console.log("		Campaign -> ", key);
 			queue.campaignImage.push(key);
 		}
 	});
@@ -145,7 +326,7 @@ function getData(element, method, type, BrandID) {
 	} else {
 		url = url + "&type=" + type;
 	}
-	console.log("URL: ", url);
+	//console.log("URL: ", url);
 
 	$.ajax({
 		type : "GET",
@@ -160,8 +341,7 @@ function getData(element, method, type, BrandID) {
 			} else {
 				$.when($(element).append(data)).done(function() {
 					if (method == "product") {
-						console.log("-------product------");
-
+						debug.msg("GetData -> Product", "				Called");
 						if (element == ".product-table") {
 							appendOptionToProduct();
 							$(".product-table tr .brand").off();
@@ -169,11 +349,13 @@ function getData(element, method, type, BrandID) {
 						}
 						lightboxReload();
 					} else if (method == "brand") {
+						debug.msg("GetData -> Brand", "				Called");
 						if (element == ".brand-table") {
+							debug.msg("GetData -> Brand-table", "					Called");
 							getAllBrandInfo();
 						}
 						lightboxReload();
-						initCustomForms();
+						//initCustomForms();
 					} else if (method == "campaign") {
 						if (element == ".library-table") {
 							appendCampaignToAside();
@@ -185,9 +367,49 @@ function getData(element, method, type, BrandID) {
 			if (element == ".accountBrand" || element == ".campaign" || element == ".product") {
 				$("<option/>").html("Empty").appendTo(element);
 			}
-			console.log("Data is null nothing to append");
+			//console.log("Data is null nothing to append");
 		}
-		style();
+		//style();
+	});
+}
+
+function getImage(currentBrandID) {
+	var url = "http://" + global_domain + "/php/Brands.php?method=image&brand=" + current.Brand.get();
+	str = "";
+	console.log("URL: ", url);
+	$.ajax({
+		type : "GET",
+		url : url,
+		datatype : "json",
+	}).done(function(data) {
+		console.log("-----json------> ", data);
+		var json = JSON.parse(data);
+		if (json.length > 0) {
+			$("#content-Image-ul").empty();
+			console.log("json length = ", json.length);
+			if ( typeof json === "object") {
+				$.each(json, function(key, value) {
+					$("#content-Image-ul").append(template.contentImage(value["ImageLocation"], value["ImageID"], value["ProductID"], value["Description"], $(".userID").val(), "Date needed", 2));
+				});
+				lightboxReload();
+			}
+		} else {
+			$("#content-Image-ul").html("");
+		}
+	});
+}
+
+function appendOptionToProduct() {
+	debug.msg("appendOptionToProduct()", "				Called");
+	$($(".brand")).each(function() {
+		if ($(this).find("option").length < 2) {
+			$('.account-form .accountBrand').find('option').clone().appendTo(this);
+		}
+	});
+	$($(".collection")).each(function() {
+		if ($(this).find("option").length < 2) {
+			$('#hidden .collection').find('option').clone().appendTo(this);
+		}
 	});
 }
 
@@ -212,28 +434,20 @@ function MainControl() {
 	if ( typeof currentPage === 'undefined') {
 		initData();
 	} else {
-		console.log("\n1. curentPage			", currentPage);
-		console.log("2.CurrentAccount		= ", current.Account.get());
-		console.log("3.CurrentBrand			= " + current.Brand.get() + "\n");
-		switch(currentPage) {
-		case "#home_page":
+		//console.log("\n1. curentPage			", currentPage);
+		//console.log("2.CurrentAccount		= ", current.Account.get());
+		//console.log("3.CurrentBrand			= " + current.Brand.get() + "\n");
+		if (currentPage == "#brand_page" || currentPage == "#help_page") {
+			//console.log("Hide");
+			$("#allpage").hide();
+			$(".top-bar").css("background", "#FFFFFF");
+		} else {
 			$("#allpage").show();
-			$(".top-bar").css("background", " none");
-			break;
-		case "#admin_page":
-			console.log("Hide");
-			$("#allpage").hide();
-			$(".top-bar").css("background", " url(../main_frame/images/bg-nav.png) no-repeat 50% bottom");
-			break;
+			$(".top-bar").css("background", "#FFFFFF");
+		}
+		switch(currentPage) {
 		case "#brand_page":
-			console.log("Hide");
-			$("#allpage").hide();
-			$(".top-bar").css("background", " url(../main_frame/images/bg-nav.png) no-repeat 50% bottom");
 			getData(".brand-table", "brand", "manager");
-			break;
-		case "#help_page":
-			$("#allpage").hide();
-			$(".top-bar").css("background", " url(../main_frame/images/bg-nav.png) no-repeat 50% bottom");
 			break;
 		case "#clientele_page":
 			break;
@@ -252,25 +466,28 @@ function MainControl() {
 			getData(".product-table", "product", "manager", current.Brand.get());
 			getData(".brand-table", "brand", "manager");
 			break;
+		case "#upload-image":
+			$("#content_page").hide();
+			break;
 		default:
 
 			break;
 		}
-		style();
+		//style();
 	}
 }
 
 function uploader() {
 	// Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
 	var previewNode = document.querySelector("#template");
-	previewNode.id = "";
+	//previewNode.id = "";
 	var previewTemplate = previewNode.parentNode.innerHTML;
 	previewNode.parentNode.removeChild(previewNode);
 
 	var myDropzone = new Dropzone(document.body, {// Make the whole body a dropzone
 		url : "main_frame/server/php/upload.php", // Set the url
-		thumbnailWidth : 80,
-		thumbnailHeight : 80,
+		thumbnailWidth : 156,
+		thumbnailHeight : 156,
 		parallelUploads : 20,
 		previewTemplate : previewTemplate,
 		autoQueue : false, // Make sure the files aren't queued until manually added
@@ -280,15 +497,14 @@ function uploader() {
 
 	myDropzone.on("addedfile", function(file) {
 		// Hookup the start button
-		console.log("File	->	Added: " + file.name);
-		//console.log("Preview Element 	-	", file.previewElement.querySelector(".start"));
+		//console.log("File	->	Added: " + file.name);
 		file.previewElement.querySelector(".start").onclick = function() {
 			myDropzone.enqueueFile(file);
 		};
+		//initCustomForms();
 	});
 	myDropzone.on("sending", function(file) {
-		console.log("File	->	Sending: " + file.name);
-		//console.log("Progress Element 	-	", document.querySelector(".progress"));
+		//console.log("File	->	Sending: " + file);
 		// Show the total progress bar when upload starts
 		document.querySelector(".progress").style.opacity = "1";
 		// And disable the start button
@@ -296,15 +512,27 @@ function uploader() {
 	});
 	// Update the total progress bar
 	myDropzone.on("uploadprogress", function(file, progress, bytesSent) {
-		//console.log("Progress-bar Element 	-	", document.querySelector(".progress-bar"));
 		document.querySelector(".progress-bar").style.width = progress + "%";
-		document.querySelector(".progress-bar").html(progress + "%");
-		console.log("File 	->	Progress", progress);
+		document.querySelector(".progress-bar").innerHTML = progress + "%";
+		//console.log("File 	->	Progress", progress);
 	});
 	// // Hide the total progress bar when nothing's uploading anymore
 	myDropzone.on("success", function(file, second) {
-		console.log("File 	-	file response", file);
-		console.log("File 	-	Second response", second);
+		//console.log("File 	-	file response", file);
+		//console.log("File 	-	Second response", second);
+		var preview = file.previewElement;
+
+		var Product = file.previewElement.querySelector("#select-product").value;
+		var UserName = file.previewElement.querySelector("#username").value;
+		var DateUpload = file.previewElement.querySelector("#date").value;
+		var aspect = file.previewElement.querySelector("#aspectRatio").value;
+		var Description = file.previewElement.querySelector("#upload-description").value;
+
+		$(preview).find(" .progress").remove();
+		$(preview).find(".info-img ul").remove();
+		$(preview).find(" .info-img").addClass("info-show");
+		$(preview).find(".info-img").append("<ul><li><label for='product-name'>Product name : " + Product + "</label><li><li><label for='username'>Username : " + UserName + "</label><li><li><label for='date'>Aspect Ratio : " + aspect + "</label><li><li><label for='aspectRatio'>Date : " + DateUpload + "</label><li><li><label for='description'>Description : " + Description + "</label><li></ul>");
+
 	});
 
 	// Setup the buttons for all transfers
@@ -326,12 +554,12 @@ function postImage(file) {
 		url : "http://" + global_domain + "/php/Brands.php?method=postImage",
 		data : json
 	}).done(function(respones) {
-		console.log("image post respones =", respones);
-		console.log("image post complete1");
+		//console.log("image post respones =", respones);
+		//console.log("image post complete1");
 	});
 
 	result.complete(function() {
-		console.log("image post complete2");
+		//console.log("image post complete2");
 		getImage(current.Brand.get());
 		upclickAllCheckbox();
 	});
@@ -347,7 +575,7 @@ function post(method, target) {
 				getBrandInfo();
 				// var json = ConvertFormToJSON(form, "Brand");
 				var json = jsonFor.Brand();
-				console.log("			Result:" + json);
+				//console.log("			Result:" + json);
 			} else {
 				alert("No Update");
 				return;
@@ -368,7 +596,7 @@ function post(method, target) {
 			var json = jsonFor.basic(form);
 		}
 
-		console.log(json);
+		//console.log(json);
 
 		$.ajax({
 			type : "POST",
@@ -379,22 +607,22 @@ function post(method, target) {
 
 			switch(method) {
 			case "postBrand":
-				console.log("postBrand");
+				//console.log("postBrand");
 				getData(".brand-table", "brand", "manager");
 				getData(".accountBrand", "brand");
 				break;
 			case "postProduct":
-				console.log("postProduct");
+				//console.log("postProduct");
 				getData(".product", "product", null, current.Brand.get());
 				getData(".product-table", "product", "manager", current.Brand.get());
 				break;
 			case "postCampaign":
-				console.log("postCampaign");
+				//console.log("postCampaign");
 				getData(".campaign", "campaign", null, current.Brand.get());
 				getData(".library-table", "campaign", "manager", current.Brand.get());
 				break;
 			case "postCampaignImage":
-				console.log("postCampaignImage");
+				//console.log("postCampaignImage");
 				$('.thumbnail-block ul li').each(function() {
 					lib.removeClass(this, "selected");
 				});
@@ -430,19 +658,6 @@ function uploadButton() {
 	});
 }
 
-function appendOptionToProduct() {
-	$($(".brand")).each(function() {
-		if ($(this).find("option").length < 2) {
-			$('.account-form .accountBrand').find('option').clone().appendTo(this);
-		}
-	});
-	$($(".collection")).each(function() {
-		if ($(this).find("option").length < 2) {
-			$('#hidden .collection').find('option').clone().appendTo(this);
-		}
-	});
-}
-
 /*
  *
  */
@@ -454,7 +669,7 @@ function getURLParameter(name) {
  *
  */
 function reset(element) {
-	//console.log("reset");
+	////console.log("reset");
 	switch(element) {
 	case ".accountID":
 		break;
@@ -496,8 +711,8 @@ function getAllBrandInfo() {
 
 	$(".brand-table tr:gt(0)").each(function() {
 		if ($(this).attr("value") == current.Brand.get()) {
-			console.log("BrandPhilosophy", $(this).find("input.BrandPhilosophy").val());
-			console.log("BrandInfo", $(this).find("input.BrandInfo").val());
+			////console.log("BrandPhilosophy", $(this).find("input.BrandPhilosophy").val());
+			////console.log("BrandInfo", $(this).find("input.BrandInfo").val());
 			var BrandPhilosophy = $(this).find("input.BrandPhilosophy").val();
 			var BrandInfo = $(this).find("input.BrandInfo").val();
 			var Description = $(this).find("input.Description").val()
@@ -520,14 +735,14 @@ function getAllBrandInfo() {
 			}
 
 			var MicroBlogs = $(this).find("input.MicroBlogs").val();
-			console.log("This MicroBlogs = ", MicroBlogs);
+			//console.log("This MicroBlogs = ", MicroBlogs);
 			if (MicroBlogs != "") {
 				if (MicroBlogs.indexOf(".com/") > -1) {
 					var trimed = MicroBlogs.substring(MicroBlogs.indexOf(".com/") + 5, MicroBlogs.length);
-					console.log("This MicroBlogs  append = ", template.microBlog(trimed));
+					////console.log("This MicroBlogs  append = ", template.microBlog(trimed));
 					$(".micro-table").append(template.microBlog(trimed));
 				} else {
-					console.log("This MicroBlogs  append = ", template.microBlog(MicroBlogs));
+					////console.log("This MicroBlogs  append = ", template.microBlog(MicroBlogs));
 					$(".micro-table").append(template.microBlog(MicroBlogs));
 				}
 			}
@@ -551,7 +766,7 @@ function clickCheckbox() {
 		$(".aside .add li").each(function() {
 			$(this).find("input").attr("disabled", false);
 			if ($(this).find("input").attr("id") == value) {
-				console.log("match", this);
+				////console.log("match", this);
 				$(this).find(".jcf-checkbox").click();
 			}
 		});
@@ -591,22 +806,22 @@ function createCampaignImage() {
 				create.push(el);
 			}
 		});
-		console.log("create =", create);
+		//console.log("create =", create);
 		jQuery.grep(old, function(el) {
 			if (jQuery.inArray(el, current) == -1) {
 				remove.push(el);
 			}
 		});
-		console.log("remove = ", remove);
+		//console.log("remove = ", remove);
 		var imageID = $(selectedImage).find("input#ImageID").val();
-		console.log("\nImageID = ", imageID);
+		//console.log("\nImageID = ", imageID);
 		$(create).each(function(index, val) {
 			json["ImageID"] = imageID;
 			json["CampaignID"] = val;
 			temp[i++] = json;
 			json = {};
 		});
-		console.log("create -> json = ", temp);
+		//console.log("create -> json = ", temp);
 		wrapper["create"] = temp;
 		var temp2 = {};
 		var json2 = {};
@@ -617,7 +832,7 @@ function createCampaignImage() {
 			temp2[i++] = json2;
 			json2 = {};
 		});
-		console.log("delete -> json = ", temp2);
+		//console.log("delete -> json = ", temp2);
 		wrapper["delete"] = temp2;
 	}
 	return wrapper;
@@ -644,66 +859,10 @@ function rowToJson() {
 	$('.brand-table').find('tr').each(function() {
 		if ($(this).attr("value") == current.Brand.get()) {
 			var array = jQuery(this).find("input").serializeArray();
-			console.log(array);
+			//console.log(array);
 		}
 	});
 }
-
-// /*
- // *
- // */
-// function ConvertFormToJSON(form, method) {
-	// var array = [];
-	// var json = {};
-	// var temp = {};
-	// var i = 0;
-	// if (method == "Product") {
-		// var temp1;
-		// console.log("with update")
-		// while (queue.product.get().length > 0) {
-			// var productID = queue.product.remove();
-			// console.log("\nbrandID : ", productID);
-			// $('.product-table').find('tr').each(function() {
-				// if ($(this).attr("value") == productID) {
-					// console.log("Matched");
-					// temp1 = jQuery(this).find("input, select").serializeArray();
-					// console.log(temp1);
-					// array = array.concat(temp1);
-				// }
-			// });
-		// }
-	// } else if (method == "Brand") {
-		// var temp1;
-		// console.log("with update")
-		// while (queue.brand.get().length > 0) {
-			// var brandID = queue.brand.remove();
-			// console.log("\nbrandID : ", brandID);
-			// $('.brand-table').find('tr').each(function() {
-				// if ($(this).attr("value") == brandID) {
-					// console.log("Matched");
-					// temp1 = jQuery(this).find("input").serializeArray();
-					// console.log(temp1);
-					// array = array.concat(temp1);
-				// }
-			// });
-		// }
-	// } else {
-		// array = jQuery(form).serializeArray();
-	// }
-	// jQuery.each(array, function() {
-		// if (this.name in json) {
-			// temp[i] = json;
-			// json = {};
-			// json[this.name] = this.value;
-			// i++;
-		// } else {
-			// json[this.name] = this.value;
-		// }
-	// });
-	// console.log(json);
-	// temp[i] = json;
-	// return temp;
-// }
 
 /*Collect data for Brand
  *
@@ -711,13 +870,8 @@ function rowToJson() {
 function getBrandInfo() {
 	$(".brand-table tr").each(function() {
 		if ($(this).attr("value") == current.Brand.get()) {
-			/*$(this).find("input.BrandPhilosophy").val($(".brand-block2 form").find('textarea[name=BrandPhilosophy]').val());
-			 $(this).find("input.BrandInfo").val($(".brand-block2 form").find('input[name=BrandInfo]').val());
-			 $(this).find("input.Description").val($(".brand-block2 form").find('textarea[name=Description]').val());*/
-
 			$(this).find("input.BrandPhilosophy").val($(".content-brand-philosophy").find("p").html());
 			$(this).find("input.BrandInfo").val($(".content-brand-info").find("p").html());
-			//$(this).find("input.Description").val($(".brand-block2 form").find('textarea[name=Description]').val());
 
 			var MicroBlogs = "";
 			switch($(".micro-block tr:eq(1)").find('select').val()) {
@@ -809,16 +963,9 @@ function getDate(dateString) {
  */
 function displayPreview(files) {
 	var _URL = window.URL || window.webkitURL;
-	//console.log("displayPreview");
-	//console.log("files : ", files);
-	//console.log("files[0] : ", files[0]);
 	var file = files[0];
 	var img = new Image();
-	//var sizeKB = file.size / 1024;
-	//console.log("sizeKB : ", sizeKB);
 	img.onload = function() {
-		//$('#preview').append(img);
-		//alert("Size: " + sizeKB + "KB\nWidth: " + img.width + "\nHeight: " + img.height);
 		function gcd(a, b) {
 			if (b > a) {
 				temp = a;
@@ -839,11 +986,8 @@ function displayPreview(files) {
 		}
 
 		var ratio = ratio(img.width, img.height);
-		//console.log("width: " + img.width + ", height: " + img.height);
-		//console.log("ratio : ", ratio);
 		$("#aspectRatio").val(ratio);
 	};
 	img.src = _URL.createObjectURL(file);
 }
-
 

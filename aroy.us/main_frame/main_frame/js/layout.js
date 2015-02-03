@@ -62,6 +62,7 @@ function initUploadFiles() {
 
 // initialize custom form elements
 function initCustomForms() {
+	debug.msg("initCustomForms", "				Called");
 	jcf.setOptions('Select', {
 		wrapNative : false,
 		wrapNativeOnMobile : false

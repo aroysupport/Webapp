@@ -6,25 +6,27 @@
 		<meta http-equiv='cache-control' content='no-cache'>
 		<title>Aroy Innovation</title>
 		<script>
-			function getCookie(cname) {
-				var name = cname + "=";
-				var ca = document.cookie.split(';');
-				for (var i = 0; i < ca.length; i++) {
-					var c = ca[i];
-					while (c.charAt(0) == ' ')
-					c = c.substring(1);
-					if (c.indexOf(name) != -1)
-						return c.substring(name.length, c.length);
-				}
-				return "";
-			}
+			/*
+			 function getCookie(cname) {
+			 var name = cname + "=";
+			 var ca = document.cookie.split(';');
+			 for (var i = 0; i < ca.length; i++) {
+			 var c = ca[i];
+			 while (c.charAt(0) == ' ')
+			 c = c.substring(1);
+			 if (c.indexOf(name) != -1)
+			 return c.substring(name.length, c.length);
+			 }
+			 return "";
+			 }
 
-			if (getCookie("aroy") == "") {
-				window.stop();
-				window.location.replace("http://accounts.aroy.us/login");
-			} else {
-				console.log("Passed");
-			}
+			 if (getCookie("aroy") == "") {
+			 window.stop();
+			 window.location.replace("http://accounts.aroy.us/login");
+			 } else {
+			 console.log("Passed");
+			 }
+			 */
 		</script>
 
 		<!-- include the site stylesheet -->
@@ -32,12 +34,15 @@
 		<link href="main_frame/css/all.css?v=1.31" rel="stylesheet" type="text/css" media="all"/>
 		<link href="main_frame/css/jcf.css" rel="stylesheet" type="text/css" media="all"/>
 		<link rel="stylesheet" href="main_frame/css/bootstrap.min.css?v=1.02">
-		
+
 		<link rel="stylesheet" href="main_frame/css/jquery-ui.css">
 		<link rel="stylesheet" href="main_frame/css/style.css">
 		<link href="main_frame/css/fancybox.css" rel="stylesheet" type="text/css" media="all"/>
 
 		<link href="main_frame/css/dropzone.css" type="text/css" rel="stylesheet" />
+		<link href="main_frame/css/jquery.dynatable.css" rel="stylesheet" type="text/css" media="all"/>
+		<!-- <link href="main_frame/css/selectric.css" type="text/css" rel="stylesheet" /> -->
+		<link href="main_frame/css/select2.min.css" type="text/css" rel="stylesheet" />
 		<!-- 2 -->
 
 		<!--[if IE]><script type="text/javascript" src="js/ie.js"></script><![endif]-->
@@ -46,8 +51,7 @@
 	</head>
 	<body>
 		<div class="load">
-			<!--<h1>Loading</h1>-->
-
+			<h1>Loading</h1>
 			<div id="floatingCirclesG">
 				<div class="f_circleG" id="frotateG_01"></div>
 				<div class="f_circleG" id="frotateG_02"></div>
@@ -67,7 +71,7 @@
 						<label for="productName">Type your product name:</label>
 						<input id="productName" type="text">
 						<a href="#" class="close cancelReset">Cancel</a>
-						<a href="#" class="close" id="ProductNameBtn">OK</a>
+						<a href="#" class="close" id="ProductNameBtn">Save</a>
 					</fieldset>
 				</form>
 			</div>
@@ -76,10 +80,10 @@
 			<div id="popup2" class="lightbox">
 				<form class="add-form" action="#">
 					<fieldset>
-						<label for="BrandName">Type your Brand name:</label>
+						<label for="BrandName">Type your brand name:</label>
 						<input id="BrandName" type="text">
 						<a href="#" class="close cancelReset">Cancel</a>
-						<a href="#" class="close" id="BrandNameBtn">OK</a>
+						<a href="#" class="close" id="BrandNameBtn">Save</a>
 						<!--<button type="button" class="edit" id="BrandNameBtn" href="#">OK</button>-->
 					</fieldset>
 				</form>
@@ -113,8 +117,23 @@
 				<form class="add-form" action="#">
 					<fieldset>
 						<label for="BrandInfo">Type your Brand Info</label>
-						<textarea id="BrandInfo"></textarea>
-						<span>Instruction : maximum length is 250 characters</span>
+						<ul>
+							<li>
+								<label for="message-body"></label>
+								<textarea placeholder="Text Area" id="BrandInfo"></textarea>
+							</li>
+							<span>Instruction : maximum length is 250 characters</span>
+							<li class="uploader">
+								<span>Optional, attach a file (HTML 500p x 950p)</span>
+								<input type="file" title="Browse">
+								<br />
+							</li>
+							<li class="uploader">
+								<span class="file-input-name">Optional, attach a QR code</span>
+								<input id="img-uploader" type="file" data-jcf='{"buttonText": "Browse" }'>
+								<br />
+							</li>
+						</ul>
 						<a href="#" class="close cancelReset">Cancel</a>
 						<a href="#" class="close" id="infoSave">Save</a>
 						<!--<button type="button" class="edit" id="BrandNameBtn" href="#">OK</button>-->
@@ -135,6 +154,304 @@
 				</form>
 			</div>
 		</div>
+		<div class="popup-holder">
+			<div id="popup-campaign-brand-message" class="lightbox">
+				<form class="add-form" action="#">
+					<fieldset>
+						<label for="BrandMessage">Brand Message</label>
+						<ul>
+							<li>
+								<ul>
+									<li>
+										<label for="start-date">Start date</label>
+										<input id="sdate" type="text" name="StartDate" placeholder="YY/ MM/ DD">
+									</li>
+									<li class="repeat">
+										<label for="repeat">Repeat for</label>
+										<select class="accountID">
+											<option>1</option>
+										</select>
+										<span class="days">Days</span>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li>
+										<label for="start-time">Start Time</label>
+										<input type="text" placeholder="HH/ MN">
+									</li>
+									<li>
+										<label for="start-time-zone">Start Time zone</label>
+										<select class="accountID">
+											<option>Time zone</option>
+										</select>
+									</li>
+									<div class="clear"></div>
+								</ul>
+							</li>
+							<li>
+								<label for="message-title">Message Title</label>
+								<input type="text" placeholder="Text Area" />
+							</li>
+							<li>
+								<label for="message-body">Message Body</label>
+								<textarea placeholder="Text Area"></textarea>
+							</li>
+							<li class="uploader">
+								<span>Optional, attach a file (HTML 500p x 950p)</span>
+								<input id="img-uploader" type="file" data-jcf='{"buttonText": "Browse" }'>
+							</li>
+							<li class="uploader">
+								<span>Optional, attach a QR code</span>
+								<input id="img-uploader" type="file" data-jcf='{"buttonText": "Browse" }'>
+							</li>
+						</ul>
+
+						<a href="#" class="close cancelReset">Cancel</a>
+						<a href="#" class="close" id="BrandNameBtn">Save</a>
+						<!--<button type="button" class="edit" id="BrandNameBtn" href="#">OK</button>-->
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div class="popup-holder">
+			<div id="popup-brand-message" class="lightbox">
+				<form class="add-form" action="#">
+					<fieldset>
+						<label for="BrandMessage">Brand Message</label>
+						<ul>
+							<li>
+								<ul>
+									<li>
+										<label for="start-date">Start date</label>
+										<input id="sdate" type="text" name="StartDate" placeholder="YY/ MM/ DD">
+									</li>
+									<li class="repeat">
+										<label for="repeat">Repeat for</label>
+										<select class="accountID">
+											<option>1</option>
+										</select>
+										<span class="days">Weeks</span>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li>
+										<label for="start-time">Start Time</label>
+										<input type="text" placeholder="HH/ MN">
+									</li>
+									<li>
+										<label for="start-time-zone">Start Time zone</label>
+										<select class="accountID">
+											<option>Time zone</option>
+										</select>
+									</li>
+									<div class="clear"></div>
+								</ul>
+							</li>
+							<li>
+								<label for="message-title">Message Title</label>
+								<input type="text" placeholder="Text Area" />
+							</li>
+							<li>
+								<label for="message-body">Message Body</label>
+								<textarea placeholder="Text Area"></textarea>
+							</li>
+							<li class="uploader">
+								<span>Optional, attach a file (HTML 500p x 950p)</span>
+								<input id="img-uploader" type="file" data-jcf='{"buttonText": "Browse" }'>
+							</li>
+							<li class="uploader">
+								<span>Optional, attach a QR code</span>
+								<input id="img-uploader" type="file" data-jcf='{"buttonText": "Browse" }'>
+							</li>
+						</ul>
+
+						<a href="#" class="close cancelReset">Cancel</a>
+						<a href="#" class="close" id="BrandNameBtn">Save</a>
+						<!--<button type="button" class="edit" id="BrandNameBtn" href="#">OK</button>-->
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div class="popup-holder">
+			<div id="popup-master-campaign" class="lightbox">
+				<form class="add-form" action="#">
+					<fieldset>
+						<label for="BrandMessage">Master Campaign</label>
+						<ul>
+							<li>
+								<label for="message-title">Campaign Type</label>
+								<input type="text" placeholder="Master" />
+							</li>
+							<li>
+								<ul>
+									<li>
+										<label for="start-date">Start date</label>
+										<input id="sdate" type="text" name="StartDate" placeholder="YY/ MM/ DD">
+									</li>
+									<li>
+										<label for="repeat">End date</label>
+										<input id="edate" type="text" name="EndDate" placeholder="YY/ MM/ DD">
+									</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li>
+										<label for="start-time">Start Time</label>
+										<input type="text" placeholder="HH/ MN">
+									</li>
+									<li>
+										<label for="start-time-zone">Start Time zone</label>
+										<select class="accountID">
+											<option>Time zone</option>
+										</select>
+									</li>
+								</ul>
+							</li>
+						</ul>
+
+						<a href="#" class="close cancelReset">Cancel</a>
+						<a href="#" class="close" id="BrandNameBtn">Save</a>
+						<!--<button type="button" class="edit" id="BrandNameBtn" href="#">OK</button>-->
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div class="popup-holder">
+			<div id="popup-brand-gallery" class="lightbox">
+				<form class="add-form" action="#">
+					<fieldset>
+						<label for="BrandPhilosophy">Brand Galler
+							<br>
+							Send Message to Artist</label>
+						<a href="#" class="close cancelReset">Cancel</a>
+						<a href="#" class="close" id="BrandNameBtn">Send</a>
+						<!--<button type="button" class="edit" id="BrandNameBtn" href="#">OK</button>-->
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div class="popup-holder">
+			<div id="popup-content-edit-product" class="lightbox">
+				<form class="add-form" action="#">
+					<fieldset>
+						<label for="BrandName">Product Name</label>
+						<select>
+							<option>^^Product Name</option>
+						</select>
+						<a href="#" class="close cancelReset">Cancel</a>
+						<a href="#" class="close" id="BrandNameBtn">Save</a>
+						<!--<button type="button" class="edit" id="BrandNameBtn" href="#">OK</button>-->
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div class="popup-holder">
+			<div id="popup-content-edit-desc" class="lightbox">
+				<form class="add-form" action="#">
+					<fieldset>
+						<label for="BrandName">Campaign Description</label>
+						<textarea placeholder="Text"></textarea>
+						<a href="#" class="close cancelReset">Cancel</a>
+						<a href="#" class="close" id="BrandNameBtn">Save</a>
+						<!--<button type="button" class="edit" id="BrandNameBtn" href="#">OK</button>-->
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div class="popup-holder">
+			<div id="popup-campaign" class="lightbox">
+				<form class="add-form" action="#">
+					<fieldset>
+						<label for="BrandName">Campaign Name</label>
+						<div class="popup-txt-top">
+							<ul>
+								<li>
+									<select>
+										<option>^^Campaign ID 1</option>
+									</select>
+								</li>
+								<li>
+									<a href="#" class="close">Add</a>
+								</li>
+							</ul>
+						</div>
+						<div class="popup-txt-campaign">
+							<ul>
+								<li>
+									<ul>
+										<li>
+											<div class="campaign-name">
+												<p>
+													^^Campaign ID 1
+												</p>
+											</div>
+											<div class="campaign-desc">
+												<p>
+													Description
+												</p>
+											</div>
+											<div class="clear"></div>
+										</li>
+										<li>
+											<a href="#" class="close remove">Remove</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<ul>
+										<li>
+											<div class="campaign-name">
+												<p>
+													^^Campaign ID 1
+												</p>
+											</div>
+											<div class="campaign-desc">
+												<p>
+													Description
+												</p>
+											</div>
+											<div class="clear"></div>
+										</li>
+										<li>
+											<a href="#" class="close remove">Remove</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<ul>
+										<li>
+											<div class="campaign-name">
+												<p>
+													^^Campaign ID 1
+												</p>
+											</div>
+											<div class="campaign-desc">
+												<p>
+													Description
+												</p>
+											</div>
+											<div class="clear"></div>
+										</li>
+										<li>
+											<a href="#" class="close remove">Remove</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+
+						<a href="#" class="close cancelReset">Cancel</a>
+						<a href="#" class="close" id="BrandNameBtn">Save</a>
+						<!--<button type="button" class="edit" id="BrandNameBtn" href="#">OK</button>-->
+					</fieldset>
+				</form>
+			</div>
+		</div>
 		<div id="hidden" style="display:none; ">
 			<select class="collection">
 				<option>Select Collection</option>
@@ -146,88 +463,110 @@
 				<!-- header of the page -->
 				<header id="header">
 					<!-- top-bar of the page -->
-					<div class="top-bar">
-						<ul class="links nav-top-bar">
-							<li>
-								<form class="account-form home-nav-form active" action="#">
-									<a class="home-nav teb-opener" href="#home_page"></a>
-								</form>
-								<form class="account-form" action="#">
-									<fieldset>
+					<div style="background: #aeaeae">
+						<div class="aroy-top-bar">
+							<div class="aroy-top-bar-left">
+								<a class="aroy-nav" href="#"> </a>
+							</div>
+							<div class="aroy-top-bar-right">
+								<ul>
+									<li>
+										<a class="nav-top-bar teb-opener" href="#admin_page">Admin</a>
+									</li>
+									<li>
+										<a class="nav-top-bar teb-opener" href="#help_page">Help</a>
+									</li>
+								</ul>
+								<select class="userID">
+									<option><a class="name" href="mailto:support@aroy.us">support@aroy.us</a></option>
+								</select>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div style="background: #ffffff;">
+						<div class="top-bar">
+							<table>
+								<tr>
+									<td>
+									<div class="top-bar-left active">
+										<a class="home-nav teb-opener" href="#home_page"> </a>
+									</div></td>
+									<td>
+									<ul>
+										<li>
+											<a href="#architecture_page" id="icon-architecture" class="teb-opener"> </a>
+										</li>
+										<li>
+											<a href="#content_page" id="icon-content" class="teb-opener"> </a>
+										</li>
+										<li>
+											<a href="#campaign_page" id="icon-campaigns" class="teb-opener"> </a>
+										</li>
+										<li>
+											<a href="#clientele_page" id="icon-clientele" class="teb-opener"> </a>
+										</li>
+										<li>
+											<a href="#brand_gallery_page" id="icon-brand-gallery" class="teb-opener"> </a>
+										</li>
+										<li>
+											<a href="#chat_room_page" id="icon-chat-room" class="teb-opener"> </a>
+										</li>
+									</ul></td>
+									<td>
+									<div class="top-bar-right">
+										<a class="nav-top-bar teb-opener" href="#brand_page">Brands</a>
 										<select class="accountID">
-											<option>Aroy</option>
+											<option>Your Account</option>
 										</select>
-									</fieldset>
-								</form>
-							</li>
-							<li>
-								<form class="account-form top-bar-form" >
-									<ul id="top_nav">
-										<li>
-											<a class="nav-top-bar teb-opener" href="#admin_page">Admin</a>
-										</li>
-										<li>
-											<a class="nav-top-bar teb-opener" href="#brand_page">Brands</a>
-										</li>
-										<li>
-											<a class="nav-top-bar teb-opener" href="#help_page">Help</a>
-										</li>
-									</ul>
-								</form>
-							</li>
-							<li>
-								<form class="account-form filter-form" action="#">
-									<fieldset>
-										<select class="userID">
-											<option><a class="name" href="mailto:support@aroy.us">support@aroy.us</a></option>
-										</select>
-
-									</fieldset>
-								</form>
-							</li>
-						</ul>
-					</div>
-					<!-- links -->
-					<div id="page3">
-						<ul class="links"></ul>
-					</div>
-					<div id="allpage">
+									</div></td>
+								</tr>
+							</table>
+							<div class="clear"></div>
+						</div>
+						<!-- links -->
+						<!--<div id="page3">
 						<ul class="links">
-							<li>
-								<form class="account-form filter-form" action="#">
-									<fieldset>
-										<select class="accountBrand">
-											<option></option>
-										</select>
-									</fieldset>
-								</form>
-							</li>
-							<li>
-								<a href="#">99/99<span>Campaigns
-									<br>
-									(Live/Pending)</span></a>
-							</li>
-							<li>
-								<a href="#">999,999<span>Brand
-									<br>
-									Followers</span></a>
-							</li>
-							<li>
-								<a href="#">999,999<span>Recent
-									<br>
-									Leads</span></a>
-							</li>
-							<li>
-								<a href="#">9,999,999<span>Recent
-									<br>
-									Views</span></a>
-							</li>
-							<li>
-								<a href="#">99&#37;<span>Conversion
-									<br>
-									Rate</span></a>
-							</li>
 						</ul>
+						</div>-->
+					</div>
+					<div style="background: #3c0505;">
+						<div id="allpage">
+							<ul class="links">
+								<li>
+									<a href="#">999,999<span>Brand
+										<br>
+										Followers</span></a>
+								</li>
+								<li>
+									<a href="#">9,999,999<span>Impressions</span></a>
+								</li>
+								<li>
+									<a href="#">999,999<span>My Style
+										<br>
+										Clicks</span></a>
+								</li>
+								<li>
+									<a href="#">999,999<span>Message
+										<br>
+										Clicks</span></a>
+								</li>
+								<li>
+									<a href="#">99&#37;<span>Brand
+										<br>
+										Engagement</span></a>
+								</li>
+								<li>
+									<form class="account-form filter-form" action="#">
+										<fieldset>
+											<select class="accountBrand">
+												<option>Your Brand</option>
+											</select>
+										</fieldset>
+									</form>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</header>
 				<!-- contain main informative part of the site -->
@@ -237,16 +576,24 @@
 						<div class="main-menu">
 							<ul class="main-nav">
 								<li id="architecture">
-									<a href="#architecture_page" class="teb-opener">Architecture</a>
+									<a href="#architecture_page" class="teb-opener"></a>
 								</li>
 								<li id="content">
-									<a href="#content_page" class="teb-opener">Content</a>
+									<a href="#content_page" class="teb-opener"></a>
 								</li>
 								<li id="campaigns">
-									<a href="#campaign_page" class="teb-opener">Campaigns</a>
+									<a href="#campaign_page" class="teb-opener"></a>
 								</li>
+							</ul>
+							<ul class="main-nav">
 								<li id="clientele">
-									<a href="#clientele_page" class="teb-opener">Clientele</a>
+									<a href="#clientele_page" class="teb-opener"></a>
+								</li>
+								<li id="brand_gallery">
+									<a href="#brand_gallery_page" class="teb-opener"></a>
+								</li>
+								<li id="chat_room">
+									<a href="#chat_room_page" class="teb-opener"></a>
 								</li>
 							</ul>
 						</div>
@@ -266,6 +613,46 @@
 										<th>User ID</th>
 										<th>Full Name</th>
 										<th class="last">Permission</th>
+									</tr>
+									<tr>
+										<td>^^User ID 01</td>
+										<td>^^Full Name 01</td>
+										<td>
+										<select>
+											<option>^^Brand Owner</option>
+										</select></td>
+									</tr>
+									<tr>
+										<td>^^User ID 02</td>
+										<td>^^Full Name 02</td>
+										<td>
+										<select>
+											<option>^^Brand Owner</option>
+										</select></td>
+									</tr>
+									<tr>
+										<td>^^User ID 03</td>
+										<td>^^Full Name 03</td>
+										<td>
+										<select>
+											<option>^^Shared Read/Write</option>
+										</select></td>
+									</tr>
+									<tr>
+										<td>^^User ID 04</td>
+										<td>^^Full Name 04</td>
+										<td>
+										<select>
+											<option>^^Shared Read Only</option>
+										</select></td>
+									</tr>
+									<tr>
+										<td>^^User ID 05</td>
+										<td>^^Full Name 05</td>
+										<td>
+										<select>
+											<option>^^Stop Sharing</option>
+										</select></td>
 									</tr>
 								</table>
 								<div class="row row-save">
@@ -306,20 +693,17 @@
 						<h1>Manager Brands</h1>
 						<form class="Post" action="#">
 							<fieldset>
-
+								<div class="right-position-text">
+									<a class="edit lightbox" id="addBrand" href="#popup2">Add</a>
+									<input type="submit" value="Save">
+								</div>
 								<table class="brand-table ">
 									<tr>
 										<th>Brand Name</th>
 									</tr>
 								</table>
-
-								<a class="edit lightbox" id="addBrand" href="#popup2">Add Brand</a>
-								<input type="submit" value="Save">
-
 							</fieldset>
-
 						</form>
-
 					</div>
 				</div>
 			</div>
@@ -334,11 +718,378 @@
 			</div>
 			<!--clientele-->
 			<div id="clientele_page">
-				<div class="help-block">
-					<h1>Clientele</h1>
-					<p>
-						Under Development
-					</p>
+				<div class="campaign-menu">
+					<ul class="campaign-nav tabset">
+						<li class="active">
+							<a href="#audience" class="teb-opener">Audience</a>
+						</li>
+						<li>
+							<a href="#clientele-tab" class="teb-opener">Clientele</a>
+						</li>
+						<li>
+							<a href="#energy" class="teb-opener">Energy</a>
+						</li>
+						<li>
+							<a href="#brand_engagement" class="teb-opener">Brand Engagement</a>
+						</li>
+					</ul>
+				</div>
+				<div style="background: #ffffff;">
+					<div id="audience">
+						<div class="audience-left-top">
+							<div>
+								<label for="filter">Filter: </label>
+								<select>
+									<option>Total</option>
+									<option>^^Collection A</option>
+									<option>^^Collection Z</option>
+								</select>
+								<label for="time-period">Time period: </label>
+								<select class="time-period">
+									<option>Day</option>
+								</select>
+								<label for="from">From:yy/mm/dd &nbsp;</label>
+								<label for="to">&nbsp; To:yy/mm/dd</label>
+							</div>
+							<div>
+								<label>Note: Reports can take between 15 seconds and 15 minutes to generate.</label>
+							</div>
+						</div>
+						<div class="audience-right-top">
+							<input type="submit" value="Email it" />
+							<input type="submit" value="Wait for it" />
+							<input type="submit" value="Cancel" />
+							<input type="submit" value="Print Window" />
+						</div>
+						<div class="clear"></div>
+						<style>
+							#bar-chart {
+
+							}
+							#bar-chart li {
+								width: 49%;
+								height: 400px;
+								display: inline-block;
+							}
+							#bar-chart li:nth-child(odd) {
+								margin-right: 19px;
+							}
+							#pie-chart {
+								background: pink;
+							}
+							#pie-chart li {
+								display: inline-block;
+								width: 33%;
+								height: 300px;
+							}
+							#pie-chart li:nth-child(odd) {
+								/*margin-right:19px;*/
+							}
+							.vertical-text {
+								display: block;
+								width: 60px;
+								margin: 0 auto;
+								line-height: 50px;
+							}
+							.charts-container {
+								padding-left: 30px;
+								display: block;
+								margin: 0 auto;
+							}
+							.charts-container-pie {
+								display: block;
+								margin: 0 auto;
+								width: 200px;
+							}
+							#Pie-info li {
+								display: initial;
+								height: initial;
+							}
+							#infoContainer {
+								position: relative;
+								top: 50%;
+								transform: translateY(-50%);
+							}
+						</style>
+						<div class="table-figures">
+							<div id="bar-chart">
+								<ul>
+									<li style="background:lightyellow;">
+										<div class="charts-container" width="500" height="300">
+											<span class="vertical-text"> Chart 1 </span>
+											<canvas id="myChart1" width="500" height="300">
+
+											</canvas>
+										</div>
+									</li>
+									<li style="background:lightpink;">
+										<div class="charts-container" width="500" height="300">
+											<p class="vertical-text">
+												Chart 2
+											</p>
+											<canvas id="myChart2" width="500" height="300">
+
+											</canvas>
+										</div>
+									</li>
+									<li style="background:lightblue;">
+										<div class="charts-container" width="500" height="300">
+											<p class="vertical-text">
+												Chart 3
+											</p>
+											<canvas id="myChart3" width="500" height="300">
+
+											</canvas>
+										</div>
+									</li>
+									<li style="background:lightgreen;">
+										<div class="charts-container" width="500" height="300">
+											<p class="vertical-text">
+												Chart 4
+											</p>
+											<canvas id="myChart4"  width="500" height="300">
+
+											</canvas>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div id="pie-chart">
+								<ul>
+									<li style="background:yellow;">
+										<div class="charts-container-pie" width="200" height="200">
+											<p class="vertical-text">
+												Chart 5
+											</p>
+											<canvas id="myChart5"  width="200" height="200">
+
+											</canvas>
+										</div>
+									</li>
+									<li style="background:brown;">
+										<div Style="display:table;">
+											<div class="infoContainer" Style="display:table-cell; vertical-align: middle">
+												<ul id="Pie-info">
+													<li>
+														<p>
+															Next Gen (Born after 2000)
+														</p>
+													</li>
+													<li>
+														<p>
+															Mellennial (Born 1981-2000)
+														</p>
+													</li>
+													<li>
+														<p>
+															Generation X (Born 1961-1980)
+														</p>
+													</li>
+													<li>
+														<p>
+															Baby Boomer (Born 1945-1960)
+														</p>
+													</li>
+													<li>
+														<p>
+															Senior (Born before 1945)
+														</p>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</li>
+									<li style="background:purple;">
+										<div class="charts-container-pie" width="200" height="200">
+											<p class="vertical-text">
+												Chart 6
+											</p>
+											<canvas id="myChart6"  width="200" height="200">
+
+											</canvas>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div id="raw-data">
+								<h4>Raw Figures</h4>
+								<table id="audience-table">
+									<thead>
+										<th data-dynatable-no-sort='true'>Date</th>
+										<th data-dynatable-no-sort='true'>Unique Devices</th>
+										<th data-dynatable-no-sort='true'>Impressions</th>
+										<th data-dynatable-no-sort='true'>Single Taps</th>
+										<th data-dynatable-no-sort='true'>My Styles</th>
+										<th data-dynatable-no-sort='true'>Message Views</th>
+										<th data-dynatable-no-sort='true'>Message Saves</th>
+										<th data-dynatable-no-sort='true'>Engagement</th>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div style="background: #ffffff;">
+					<div id="clientele-tab">
+						<div class="audience-left-top">
+							<div>
+								<label for="filter">Filter: </label>
+								<select>
+									<option>Total ^^Brand</option>
+									<option>^^Product 1</option>
+									<option>^^Product 2</option>
+								</select>
+								<label for="time-period">Time period: </label>
+								<select class="time-period">
+									<option>Day</option>
+								</select>
+								<label for="from">From:yy/mm/dd &nbsp;</label>
+								<label for="to">&nbsp; To:yy/mm/dd</label>
+							</div>
+							<div>
+								<label>Note: Reports can take between 15 seconds and 15 minutes to generate.</label>
+							</div>
+						</div>
+						<div class="audience-right-top">
+							<input type="submit" value="Email it" />
+							<input type="submit" value="Wait for it" />
+							<input type="submit" value="Cancel" />
+							<input type="submit" value="Print Window" />
+						</div>
+						<div class="clear"></div>
+						<div class="table-figures">
+							<h4>Raw Figures</h4>
+							<table id="clientele-table">
+								<thead>
+									<th data-dynatable-no-sort='true'>Date</th>
+									<th data-dynatable-no-sort='true'>Unique Devices</th>
+									<th data-dynatable-no-sort='true'>Impressions</th>
+									<th data-dynatable-no-sort='true'>Single Taps</th>
+									<th data-dynatable-no-sort='true'>My Styles</th>
+									<th data-dynatable-no-sort='true'>Message Views</th>
+									<th data-dynatable-no-sort='true'>Message Saves</th>
+									<th data-dynatable-no-sort='true'>Engagement</th>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div style="background: #ffffff;">
+					<div id="energy">
+						<div class="audience-left-top">
+							<div>
+								<label for="filter">Filter: </label>
+								<select>
+									<option>Total ^^Brand</option>
+									<option>^^Product 1</option>
+									<option>^^Product 2</option>
+								</select>
+								<label for="time-period">Time period: </label>
+								<select class="time-period">
+									<option>Day</option>
+								</select>
+								<label for="from">From:yy/mm/dd &nbsp;</label>
+								<label for="to">&nbsp; To:yy/mm/dd</label>
+							</div>
+							<div>
+								<label>Note: Reports can take between 15 seconds and 15 minutes to generate.</label>
+							</div>
+						</div>
+						<div class="audience-right-top">
+							<input type="submit" value="Email it" />
+							<input type="submit" value="Wait for it" />
+							<input type="submit" value="Cancel" />
+							<input type="submit" value="Print Window" />
+						</div>
+						<div class="clear"></div>
+						<div class="energy-thumnail">
+							<ul>
+								<li>
+									<a href="#">Thumnail</a>
+								</li>
+								<li>
+									<a href="#">Thumnail</a>
+								</li>
+								<li>
+									<a href="#">Thumnail</a>
+								</li>
+								<li>
+									<a href="#">Thumnail</a>
+								</li>
+								<li>
+									<a href="#">Thumnail</a>
+								</li>
+								<li>
+									<a href="#">Thumnail</a>
+								</li>
+								<li>
+									<a href="#">Thumnail</a>
+								</li>
+								<li>
+									<a href="#">Thumnail</a>
+								</li>
+								<li>
+									<a href="#">Thumnail</a>
+								</li>
+							</ul>
+						</div>
+						<div class="table-figures">
+							<h4>Raw Figures</h4>
+							<table id="energy-table">
+								<thead>
+									<th data-dynatable-no-sort='true'>Energy</th>
+									<th data-dynatable-no-sort='true'>Rank</th>
+									<th data-dynatable-no-sort='true'>Answering</th>
+									<th data-dynatable-no-sort='true'>%</th>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div style="background: #ffffff;">
+					<div id="brand_engagement">
+						<div class="audience-left-top">
+							<div>
+								<label for="filter">Filter: </label>
+								<select>
+									<option>Total ^^Brand</option>
+									<option>^^Product 1</option>
+									<option>^^Product 2</option>
+								</select>
+								<label for="time-period">Time period: </label>
+								<select class="time-period">
+									<option>Day</option>
+								</select>
+								<label for="from">From:yy/mm/dd &nbsp;</label>
+								<label for="to">&nbsp; To:yy/mm/dd</label>
+							</div>
+							<div>
+								<label>Note: Reports can take between 15 seconds and 15 minutes to generate.</label>
+							</div>
+						</div>
+						<div class="audience-right-top">
+							<input type="submit" value="Email it" />
+							<input type="submit" value="Wait for it" />
+							<input type="submit" value="Cancel" />
+							<input type="submit" value="Print Window" />
+						</div>
+						<div class="clear"></div>
+						<div class="table-figures">
+							<h4>Raw Figures</h4>
+							<table id="brand-engagement-table">
+								<thead>
+									<th data-dynatable-no-sort='true'>Date</th>
+									<th data-dynatable-no-sort='true'>Brand Followers</th>
+									<th data-dynatable-no-sort='true'>Engagement%</th>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 			<!--campaign page-->
@@ -346,16 +1097,16 @@
 				<div class="campaign-menu">
 					<ul class="campaign-nav tabset">
 						<li class="active">
-							<a href="#fast-track-campaign" class="teb-opener">Fast Track Campaign</a>
+							<a href="#fast-track-campaign" class="teb-opener">Campaigns</a>
 						</li>
 						<li>
-							<a href="#new-campaign" class="teb-opener">New Campaign</a>
+							<a href="#new-campaign" class="teb-opener">Brand Messages</a>
 						</li>
 						<li>
-							<a href="#campaign-library" class="teb-opener">Campaign Library</a>
+							<a href="#campaign-library" class="teb-opener">Library</a>
 						</li>
 						<li>
-							<a href="#" class="teb-opener">Campaign Editor</a>
+							<a href="#master-campaign" class="teb-opener">Master Campaign</a>
 						</li>
 					</ul>
 				</div>
@@ -363,96 +1114,119 @@
 				<!--Home navigation end-->
 				<div class="product-block campaign-block" id="fast-track-campaign">
 					<div class="form-area">
-						<!-- compaign form -->
 						<form class="compaign-form" action="" method="post">
 							<div class="inner-data">
 								<div class="block">
-									<h2 class="first-block">Please give a brief description of your campaign:</h2>
+									<h2 class="first-block">You can type a brief description of your campaign below:</h2>
 									<div class="row">
 										<textarea cols="10" rows="10" name="Message" placeholder=""></textarea>
 									</div>
 								</div>
-								<div class="block">
-									<h2>1. Choose Your Clientele</h2>
-									<span class="sub-txt">Select your clientele for this campaign. Please choose only one.</span>
-									<ul class="clientele">
-										<li>
-											<div class="col">
-												<input name="radio1" id="leads" type="radio">
-												<label for="leads">Leads (Roars)</label>
-											</div>
-											<span class="note">Note: For offers, can use QR codes</span>
-										</li>
-										<li>
-											<div class="col">
-												<input name="radio1" id="followers" type="radio">
-												<label for="followers">Brand Followers</label>
-											</div>
-											<span class="note">Note: For news and events</span>
-										</li>
-										<li>
-											<div class="col">
-												<input name="radio1" id="devices" type="radio">
-												<label for="devices">All Devices - <span>no message</span></label>
-											</div>
-											<span class="note">Note: For campaigns without messaging</span>
-										</li>
-										<li>
-											<div class="col">
-												<input name="radio1" id="devices1" type="radio">
-												<label for="devices1">All Devices - <span>with message</span></label>
-											</div>
-											<span class="note">Note: Only for Aroy Support </span>
-										</li>
-										<li>
-											<div class="col">
-												<input name="radio1" id="test" type="radio">
-												<label for="test">Test Devices</label>
-											</div>
-											<span class="note">Note: Only for Aroy Support </span>
-										</li>
-										<li>
-											<div class="col">
-												<input name="radio1" id="insertions" type="radio">
-												<label for="insertions">Insertions</label>
-												<input type="text" placeholder="99,999,999">
-											</div>
-											<span class="note">Note: Talk to your Rep</span>
-										</li>
-									</ul>
+								<div class="right-position-text">
+									<a href="#popup-campaign-brand-message" class="edit add-message lightbox">Add message</a>
 								</div>
-								<div class="block">
-									<h2>2. Select Images for Campaign</h2>
-									<span class="sub-txt">Select how you want to add images for this campaign</span>
-									<div class="radio-row">
-										<input name="radio2" id="manual" type="radio">
-										<label for="manual">Manual (after you publish the campaign, then add images in Content Manager)</label>
+								<div class="clear"></div>
+								<div class="block campaing-block">
+									<div>
+										<span>Campaign ID</span>
+										<div class="right-position-text">
+											<a href="#popup-campaign-brand-message" class="edit lightbox">Edit</a>
+											<input type="submit" value="Save">
+										</div>
+										<div class="clear"></div>
 									</div>
-									<div class="radio-row">
-										<input name="radio2" id="auto" type="radio">
-										<label for="auto">Auto (all images for your products are added automatically, except blocked images)</label>
+									<div>
+										<div class="campaign-info">
+											<ul>
+												<li>
+													<ul>
+														<li>
+															Campaign Type:
+														</li>
+														<li>
+															My Style
+														</li>
+													</ul>
+												</li>
+												<li>
+													<ul>
+														<li>
+															Start date:
+														</li>
+														<li>
+															YY/ MM/ DD
+														</li>
+													</ul>
+												</li>
+												<li>
+													<ul>
+														<li>
+															Start Time:
+														</li>
+														<li>
+															HH: MN
+														</li>
+													</ul>
+												</li>
+												<li>
+													<ul>
+														<li>
+															Message Title:
+														</li>
+														<li></li>
+													</ul>
+												</li>
+												<li>
+													<ul>
+														<li>
+															Message Body:
+														</li>
+														<li></li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+										<div class="campaign-info">
+											<ul>
+												<li>
+													<ul>
+														<li>
+															Repeat for:
+														</li>
+														<li>
+															2 Days
+														</li>
+													</ul>
+												</li>
+												<li>
+													<ul>
+														<li>
+															Time zone:
+														</li>
+														<li>
+															Automatic
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="file-block">
+										<div>
+											<span>Optional, attach a file (HTML 500p x 950p)</span>
+											<div class="div-attach">
+
+											</div>
+										</div>
+										<div>
+											<span>QR code</span>
+											<div class="div-qr-code">
+
+											</div>
+										</div>
 									</div>
 								</div>
-								<div class="block">
-									<h2>3. Campaign Message</h2>
-									<span class="sub-txt">Campaign Message</span>
-									<div class="row">
-										<input type="text" name="MessageTitle" placeholder="Title">
-									</div>
-									<!--<select class="accountBrand" name="BrandID"></select>-->
-									<div class="row">
-										<input type="text" name="Name" placeholder="^^Brand name" disabled="disabled">
-									</div>
-									<div class="row">
-										<textarea cols="10" rows="10" name="Message" placeholder="Message"></textarea>
-									</div>
-								</div>
-								<div class="block">
-									<h2>4. Upload a QR Code (Applicable for Roar clientele only)</h2>
-									<span class="sub-txt">Upload your QR code</span>
-									<input id="img-uploader" type="file" data-jcf='{"buttonText": "Browse" }'>
-								</div>
-								<input type="submit" value="Save">
 							</div>
 						</form>
 					</div>
@@ -461,16 +1235,307 @@
 				<!-- tab-data -->
 				<div class="tab-data add tab-content" id="campaign-library">
 					<div class="library-block">
-						<h1>Campaign Library</h1>
 						<form class="library-form" action="#">
 							<fieldset>
+								<div class="right-position-text">
+									<input type="submit" value="Save">
+								</div>
 								<table class="library-table table table-condensed" style="border-collapse:collapse;">
 									<tbody>
 										<tr>
 											<th> Active </th>
-											<th> Campaign Name </th>
+											<th class="campaign-type"></th>
+											<th>ID</th>
 										</tr>
+										<tr class="accordion-toggle collapsed" data-target=".campaign1" data-toggle="collapse">
+											<td>
+											<input type="checkbox">
+											</td>
+											<td class="campaign-type"><img src="main_frame/images/brand_message_icon.png" alt="my style"/></td>
+											<td><label for="1">^^Brand Message ID</label></td>
+										</tr>
+										<tr>
+											<td class="hidden-row"></td>
+											<td class="hidden-row"></td>
+											<td class="hidden-row">
+											<div class="accordian-body campaign1 collapse">
+												<div>
+													<div class="campaign-info">
+														<ul>
+															<li>
+																<ul>
+																	<li>
+																		Start date:
+																	</li>
+																	<li>
+																		YY/ MM/ DD
+																	</li>
+																</ul>
+															</li>
+															<li>
+																<ul>
+																	<li>
+																		Start Time:
+																	</li>
+																	<li>
+																		HH: MN
+																	</li>
+																</ul>
+															</li>
+															<li>
+																<ul>
+																	<li>
+																		Message Title:
+																	</li>
+																	<li></li>
+																</ul>
+															</li>
+															<li>
+																<ul>
+																	<li>
+																		Message Body:
+																	</li>
+																	<li></li>
+																</ul>
+															</li>
+														</ul>
+													</div>
+													<div class="campaign-info">
+														<ul>
+															<li>
+																<ul>
+																	<li>
+																		Repeat for:
+																	</li>
+																	<li>
+																		2 Weeks
+																	</li>
+																</ul>
+															</li>
+															<li>
+																<ul>
+																	<li>
+																		Time zone:
+																	</li>
+																	<li>
+																		Time zone
+																	</li>
+																</ul>
+															</li>
+														</ul>
+													</div>
+												</div>
 
+												<div class="file-block">
+													<div>
+														<span>Optional, attach a file (HTML 500p x 950p)</span>
+														<div class="div-attach">
+
+														</div>
+													</div>
+													<div>
+														<span>QR code</span>
+														<div class="div-qr-code">
+
+														</div>
+													</div>
+												</div>
+											</div></td>
+										</tr>
+										<tr class="accordion-toggle collapsed" data-target=".campaign2" data-toggle="collapse">
+											<td>
+											<input type="checkbox">
+											</td>
+											<td class="campaign-type"><img src="main_frame/images/Campaign_icon.png" alt="campaign icon" /></td>
+											<td><label for="2">Campaign ID</label></td>
+										</tr>
+										<tr>
+											<td class="hidden-row"></td>
+											<td class="hidden-row"></td>
+											<td class="hidden-row">
+											<div class="accordian-body campaign2 collapse">
+												<div>
+													<div class="campaign-info">
+														<ul>
+															<li>
+																<ul>
+																	<li>
+																		Campaign Type:
+																	</li>
+																	<li>
+																		My Style
+																	</li>
+																</ul>
+															</li>
+															<li>
+																<ul>
+																	<li>
+																		Start date:
+																	</li>
+																	<li>
+																		YY/ MM/ DD
+																	</li>
+																</ul>
+															</li>
+															<li>
+																<ul>
+																	<li>
+																		Start Time:
+																	</li>
+																	<li>
+																		HH: MN
+																	</li>
+																</ul>
+															</li>
+															<li>
+																<ul>
+																	<li>
+																		Message Title:
+																	</li>
+																	<li></li>
+																</ul>
+															</li>
+															<li>
+																<ul>
+																	<li>
+																		Message Body:
+																	</li>
+																	<li></li>
+																</ul>
+															</li>
+														</ul>
+													</div>
+													<div class="campaign-info">
+														<ul>
+															<li>
+																<ul>
+																	<li>
+																		Repeat for:
+																	</li>
+																	<li>
+																		2 Days
+																	</li>
+																</ul>
+															</li>
+															<li>
+																<ul>
+																	<li>
+																		Time zone:
+																	</li>
+																	<li>
+																		Automatic
+																	</li>
+																</ul>
+															</li>
+														</ul>
+													</div>
+												</div>
+
+												<div class="file-block">
+													<div>
+														<span>Optional, attach a file (HTML 500p x 950p)</span>
+														<div class="div-attach">
+
+														</div>
+													</div>
+													<div>
+														<span>QR code</span>
+														<div class="div-qr-code">
+
+														</div>
+													</div>
+												</div>
+											</div></td>
+										</tr>
+										<tr class="accordion-toggle collapsed" data-target=".campaign3" data-toggle="collapse">
+											<td>
+											<input type="checkbox">
+											</td>
+											<td class="campaign-type">Master</td>
+											<td><label for="3">Master Campaign ID</label></td>
+										</tr>
+										<tr>
+											<td class="hidden-row"></td>
+											<td class="hidden-row"></td>
+											<td class="hidden-row">
+											<div class="accordian-body campaign3 collapse">
+												<div>
+													<div class="campaign-info">
+														<ul>
+															<li>
+																<ul>
+																	<li>
+																		Campaign Type:
+																	</li>
+																	<li>
+																		Master
+																	</li>
+																</ul>
+															</li>
+															<li>
+																<ul>
+																	<li>
+																		Start date:
+																	</li>
+																	<li>
+																		YY/ MM/ DD
+																	</li>
+																</ul>
+															</li>
+															<li>
+																<ul>
+																	<li>
+																		Start Time:
+																	</li>
+																	<li>
+																		HH: MN
+																	</li>
+																</ul>
+															</li>
+														</ul>
+													</div>
+													<div class="campaign-info">
+														<ul>
+															<li>
+																<ul>
+																	<li>
+																		End date:
+																	</li>
+																	<li>
+																		YY/ MM/ DD
+																	</li>
+																</ul>
+															</li>
+															<li>
+																<ul>
+																	<li>
+																		Time zone:
+																	</li>
+																	<li>
+																		Time zone
+																	</li>
+																</ul>
+															</li>
+														</ul>
+													</div>
+												</div>
+
+												<div class="file-block">
+													<div>
+														<span>Optional, attach a file (HTML 500p x 950p)</span>
+														<div class="div-attach">
+
+														</div>
+													</div>
+													<div>
+														<span>QR code</span>
+														<div class="div-qr-code">
+
+														</div>
+													</div>
+												</div>
+											</div></td>
+										</tr>
 									</tbody>
 								</table>
 							</fieldset>
@@ -484,152 +1549,365 @@
 						<form class="compaign-form" action="" method="post">
 							<div class="inner-data">
 								<div class="block">
-									<h2 class="first-block">Please give a brief description of your campaign:</h2>
+									<h2 class="first-block">You can type a brief description of your campaign below:</h2>
 									<div class="row">
 										<textarea cols="10" rows="10" name="Description" placeholder=""></textarea>
 									</div>
 								</div>
-								<div class="block">
-									<h2>1. Campaign Dates &amp; Market</h2>
-									<span class="sub-txt">Enter Dates &amp; Location</span>
-									<div class="location-row">
-										<div class="box">
-											<label for="sdate">Start Date</label>
-											<input id="sdate" type="text" name="StartDate" placeholder="DD / MM / YYYY">
+								<div class="right-position-text">
+									<a href="#popup-brand-message" class="edit add-message lightbox">Add message</a>
+								</div>
+								<div class="clear"></div>
+								<div class="block campaing-block">
+									<div>
+										<span>Brand Message ID</span>
+										<div class="right-position-text">
+											<a href="#popup-brand-message" class="edit lightbox">Edit</a>
+											<input type="submit" value="Save">
 										</div>
-										<div class="box">
-											<label for="edate">End Date</label>
-											<input id="edate" type="text" name="EndDate" placeholder="DD / MM / YYYY">
+										<div class="clear"></div>
+									</div>
+									<div>
+										<div class="campaign-info">
+											<ul>
+												<li>
+													<ul>
+														<li>
+															Start date:
+														</li>
+														<li>
+															YY/ MM/ DD
+														</li>
+													</ul>
+												</li>
+												<li>
+													<ul>
+														<li>
+															Start Time:
+														</li>
+														<li>
+															HH: MN
+														</li>
+													</ul>
+												</li>
+												<li>
+													<ul>
+														<li>
+															Message Title:
+														</li>
+														<li></li>
+													</ul>
+												</li>
+												<li>
+													<ul>
+														<li>
+															Message Body:
+														</li>
+														<li></li>
+													</ul>
+												</li>
+											</ul>
 										</div>
-										<div class="box">
-											<label>Location</label>
-											<select name="Market">
-												<option value="US">United States</option>
-												<option value="US">United States</option>
-												<option value="US">United States</option>
-												<option value="US">United States</option>
-											</select>
+										<div class="campaign-info">
+											<ul>
+												<li>
+													<ul>
+														<li>
+															Repeat for:
+														</li>
+														<li>
+															2 Weeks
+														</li>
+													</ul>
+												</li>
+												<li>
+													<ul>
+														<li>
+															Time zone:
+														</li>
+														<li>
+															Time zone
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="file-block">
+										<div>
+											<span>Optional, attach a file (HTML 500p x 950p)</span>
+											<div class="div-attach">
+
+											</div>
+										</div>
+										<div>
+											<span>QR code</span>
+											<div class="div-qr-code">
+
+											</div>
 										</div>
 									</div>
 								</div>
-								<div class="block">
-									<h2>2. Choose Your Clientele</h2>
-									<span class="sub-txt">Select your clientele for this campaign. Please choose only one.</span>
-									<ul class="clientele">
-										<li>
-											<div class="col">
-												<input name="radio1" id="leads" type="radio">
-												<label for="leads">Leads (Roars)</label>
-											</div>
-											<span class="note">Note: For offers, can use QR codes</span>
-										</li>
-										<li>
-											<div class="col">
-												<input name="radio1" id="followers" type="radio">
-												<label for="followers">Brand Followers</label>
-											</div>
-											<span class="note">Note: For news and events</span>
-										</li>
-										<li>
-											<div class="col">
-												<input name="radio1" id="devices" type="radio">
-												<label for="devices">All Devices - <span>no message</span></label>
-											</div>
-											<span class="note">Note: For campaigns without messaging</span>
-										</li>
-										<li>
-											<div class="col">
-												<input name="radio1" id="devices1" type="radio">
-												<label for="devices1">All Devices - <span>with message</span></label>
-											</div>
-											<span class="note">Note: Only for Aroy Support </span>
-										</li>
-										<li>
-											<div class="col">
-												<input name="radio1" id="test" type="radio">
-												<label for="test">Test Devices</label>
-											</div>
-											<span class="note">Note: Only for Aroy Support </span>
-										</li>
-										<li>
-											<div class="col">
-												<input name="radio1" id="insertions" type="radio">
-												<label for="insertions">Insertions</label>
-												<input type="text" placeholder="99,999,999">
-											</div>
-											<span class="note">Note: Talk to your Rep</span>
-										</li>
-									</ul>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!--master campaign-->
+				<div class="product-block campaign-block" id="master-campaign">
+					<div class="form-area">
+						<form class="compaign-form" action="" method="post">
+							<div class="inner-data">
+								<div class="block txt-first-block">
+									<h2 class="first-block">This is the master campaign for placements in Mane Page.</h2>
 								</div>
-								<div class="block">
-									<h2>3. Select Images for Campaign</h2>
-									<span class="sub-txt">Select how you want to add images for this campaign</span>
-									<div class="radio-row">
-										<input name="radio2" id="manual" type="radio">
-										<label for="manual">Manual (after you publish the campaign, then add images in Content Manager)</label>
+								<div class="right-position-text">
+									<a href="#popup-master-campaign" class="edit add-message lightbox">New Master</a>
+								</div>
+								<div class="clear"></div>
+								<div class="block campaing-block">
+									<div>
+										<span>Master Campaign ID</span>
+										<div class="right-position-text">
+											<a href="#popup-master-campaign" class="edit lightbox">Edit</a>
+											<input type="submit" value="Save">
+										</div>
+										<div class="clear"></div>
 									</div>
-									<div class="radio-row">
-										<input name="radio2" id="auto" type="radio">
-										<label for="auto">Auto (all images for your products are added automatically, except blocked images)</label>
+									<div class="campaing-wrap-info">
+										<div class="campaign-info">
+											<ul>
+												<li>
+													<ul>
+														<li>
+															Campaign Type:
+														</li>
+														<li>
+															Master
+														</li>
+													</ul>
+												</li>
+												<li>
+													<ul>
+														<li>
+															Start date:
+														</li>
+														<li>
+															YY/ MM/ DD
+														</li>
+													</ul>
+												</li>
+												<li>
+													<ul>
+														<li>
+															Start Time:
+														</li>
+														<li>
+															HH: MN
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+										<div class="campaign-info">
+											<ul>
+												<li>
+													<ul>
+														<li>
+															End date:
+														</li>
+														<li>
+															YY/ MM/ DD
+														</li>
+													</ul>
+												</li>
+												<li>
+													<ul>
+														<li>
+															Time zone:
+														</li>
+														<li>
+															Time zone
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</div>
 									</div>
 								</div>
-								<div class="block">
-									<h2>4. Campaign Message</h2>
-									<span class="sub-txt">Campaign Message</span>
-									<div class="row">
-										<input type="text" name="MessageTitle" placeholder="Title">
-									</div>
-									<!--<select class="accountBrand" name="BrandID"></select>-->
-									<div class="row">
-										<input type="text" name="Name" placeholder="^^Brand name" disabled="disabled">
-									</div>
-									<div class="row">
-										<textarea cols="10" rows="10" name="Message" placeholder="Message"></textarea>
-									</div>
-								</div>
-								<div class="block">
-									<h2>5. Upload a QR Code (Applicable for Roar clientele only)</h2>
-									<span class="sub-txt">Upload your QR code</span>
-									<input id="img-uploader" type="file" data-jcf='{"buttonText": "Browse" }'>
-								</div>
-								<input type="submit" value="Save">
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>
 			<!--content page-->
+			<style>
+				.image-container {
+					width: 483px;
+					height: 302px;
+					text-align: center;
+				}
+				.image-container img {
+					max-width: 483px;
+					max-height: 300px;
+					background-position: center;
+					background-size: contain;
+					background-repeat: no-repeat;
+				}
+				/* Global: Left half image */
+				img.left-half {
+					width: 100%;
+					box-sizing: border-box;
+					float: left;
+					border: 1px solid #D7D7D7;
+					padding: 3px;
+				}
+
+				/* Global: Right half image */
+				img.right-half {
+					width: 100%;
+					box-sizing: border-box;
+					float: right;
+					border: 1px solid #D7D7D7;
+					padding: 3px;
+				}
+
+				/* Fix */
+				.images-same-height a {
+					display: inline-block;
+					width: 49%;
+					height: 170px;
+					overflow: hidden;
+				}
+			</style>
 			<div id="content_page">
 				<div class="campaign-menu">
 					<ul class="campaign-nav content-nav tabset">
 						<li class="active">
-							<a href="#show-content" class="teb-opener">Show All</a>
+							<a href="#content-images" class="teb-opener">Images</a>
 						</li>
 						<li>
-							<a href="#upload-content" class="teb-opener">Upload</a>
+							<a href="#content-interactive" class="teb-opener">Interactive</a>
 						</li>
-
+						<li>
+							<a href="#content-video" class="teb-opener">Video</a>
+						</li>
+						<li id="special-image" style="display:none">
+							<a href="#upload-image" class="teb-opener">image</a>
+						</li>
 					</ul>
 				</div>
-				<!--Home navigation end-->
-				<!-- right col -->
-				<div class="product-block campaign-block upload-block" id="upload-content">
-					<!--<form id="fileupload" enctype="multipart/form-data">-->
+				<!--content-images-->
+				<div id="content-images">
+					<div class="form-area">
+						<form action="#" method="post">
+							<div class="select-text">
+								<label for="filter1">Filter 1:</label>
+								<select>
+									<option>Active</option>
+									<option>Inactive</option>
+								</select>
+								<br>
+								<label for="sort-by">Sort by:</label>
+								<select>
+									<option>Date Ascending</option>
+									<option>Date Descending</option>
+								</select>
+							</div>
+							<div class="search">
+								<ul class="tabset">
+									<li>
+										<a href="#" class="teb-opener click-upload" id="hide-campaign-nav"><img src="main_frame/images/upload.png" alt="upload-icon" /> Click here to upload new Images</a>
+									</li>
+								</ul>
+								<input type="text" placeholder="Search Product or Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Product or Username'" />
+							</div>
+							<div class="clear"></div>
+							<div class="brand-gallery-img">
+								<ul>
+									<li>
+										<ul id="content-Image-ul">
+											<li>
+
+												<div class="image-container">
+													<img src="main_frame/images/image.png" alt="brand gallery" />
+													<div class="txt-hover-top">
+														<div class="txt-left">
+															<ul>
+																<li>
+																	^^Photo ID
+																</li>
+																<li>
+																	^^Product
+																</li>
+																<li>
+																	^^Description
+																</li>
+																<li>
+																	^^Username
+																</li>
+																<li>
+																	^^Date of upload
+																</li>
+															</ul>
+														</div>
+														<div class="txt-right">
+															<ul>
+																<li>
+																	&nbsp;
+																</li>
+																<li>
+																	<a href="#popup-content-edit-product" class="lightbox">Edit Product</a>
+																</li>
+																<li>
+																	<a href="#popup-content-edit-desc" class="lightbox">Edit Description</a>
+																</li>
+																<li>
+																	&nbsp;
+																</li>
+																<li>
+																	<input type="checkbox" />
+																	<span>Delete  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+																	<input type="checkbox" />
+																	<span>Block</span>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<div class="txt-hover-bottom">
+														<a href="#popup-campaign" class="lightbox">Active Campaigns:&lsaquo;space&rsaquo;^^COUNT</a>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!--Interactive-->
+				<div id="content-interactive">
+					<h1>Coming Soon!</h1>
+				</div>
+				<!--Interactive-->
+				<div id="content-video">
+					<!--upload image-->
+					<div id="upload-image">
+						<!--<form id="fileupload" enctype="multipart/form-data">-->
 						<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 						<div class="row fileupload-buttonbar">
 							<div class="col-lg-7">
 								<!-- The fileinput-button span is used to style the file input field as button -->
-								<!-- <span class="btn btn-success fileinput-button"> 
-									<i class="glyphicon glyphicon-plus"></i> 
-									<span>Add files...</span>
-									<input type="file" name="files[]" multiple>
-								</span>
+								<button class="fileinput-button">
+									Add files
+								</button>
 								<button type="submit" class="btn btn-primary start">
-									<i class="glyphicon glyphicon-upload"></i>
-									<span>Start upload</span>
-								</button> -->
-								<button class="fileinput-button"> Add</button>
-								<button type="submit" class="btn btn-primary start">Start</button>
+									Start upload
+								</button>
+								<button class="btn btn-primary cancel">
+									Cancel Upload
+								</button>
 								<!-- The global file processing state -->
 								<span class="fileupload-process"></span>
 							</div>
@@ -646,126 +1924,90 @@
 						<div class="table table-striped" class="files" id="previews">
 							<div id="template" class="file-row">
 								<!-- This is used as the file preview template -->
-								<div>
-									<span class="preview"><img data-dz-thumbnail /></span>
-								</div>
-								<div>
-									<p class="name" data-dz-name></p>
-									<strong class="error text-danger" data-dz-errormessage></strong>
-								</div>
-								<div>
-									<p class="size" data-dz-size></p>
-									<div class="progress active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-										<div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+								<div class="img">
+									<div>
+										<span class="preview"><img data-dz-thumbnail /></span>
+									</div>
+
+									<div>
+										<!--<p class="name" data-dz-name></p>-->
+										<strong class="error text-danger" data-dz-errormessage></strong>
+									</div>
+									<div>
+										<!--<p class="size" data-dz-size></p>-->
+										<div class="progress active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+											<div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+										</div>
 									</div>
 								</div>
-								<div>
-									<button class="btn btn-primary start">
-										<i class="glyphicon glyphicon-upload"></i>
-										<span>Start</span>
-									</button>
-									<button data-dz-remove class="btn btn-warning cancel">
-										<i class="glyphicon glyphicon-ban-circle"></i>
-										<span>Cancel</span>
-									</button>
-									<button data-dz-remove class="btn btn-danger delete">
+								<div class="info-img">
+									<ul>
+										<li>
+											<label for="product-name">Product name</label>
+											<select id="select-product">
+												<option value="product1">Product 1</option>
+												<option value="product2">Product 2</option>
+											</select>
+										</li>
+										<li>
+											<ul>
+												<li>
+													<label for="username">Username</label>
+													<input type="text" id="username" placeholder="^^Auto"/>
+												</li>
+												<li>
+													<label for="date">^^Date of upload</label>
+													<input type="text" id="date" placeholder="^^Auto"/>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<ul>
+												<li>
+													<label for="aspectRatio">Aspect Ratio</label>
+													<select id="aspectRatio">
+														<option value="aspectRatio1">Aspect Ratio 1</option>
+														<option value="aspectRatio2">Aspect Ratio 2</option>
+													</select>
+												</li>
+												<li>
+													<label for="description">Description (Optional)</label>
+													<input type="text" id="upload-description"/>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<ul>
+												<li>
+													<button class="btn btn-primary start">
+														<i class="glyphicon glyphicon-upload"></i>
+														<span>Upload</span>
+													</button>
+												</li>
+												<li>
+													<button data-dz-remove class="btn btn-warning cancel">
+														<i class="glyphicon glyphicon-ban-circle"></i>
+														<span>Cancel</span>
+													</button>
+												</li>
+											</ul>
+										</li>
+									</ul>
+									<div>
+										<!--
+										<button data-dz-remove class="btn btn-danger delete">
 										<i class="glyphicon glyphicon-trash"></i>
 										<span>Delete</span>
-									</button>
+										</button>
+										-->
+									</div>
 								</div>
+								<div class="clear"></div>
 							</div>
 
 						</div>
-					<!--</form>-->
-
-				</div>
-				<div class="show-all-block">
-					<form class="content-form" id="show-content" action="#">
-						<fieldset>
-							<!-- twocolumns -->
-							<div class="twocolumns">
-								<!-- aside -->
-								<aside class="aside">
-									<div >
-										<div class="inner-holder">
-											<div class="box">
-												<h2>INFO</h2>
-												<ul>
-													<li>
-														<p  id="image-ProductID">
-															^^Product
-														</p>
-													</li>
-													<li>
-														<p id="image-imageID">
-															^^Photo ID
-														</p>
-													</li>
-													<li>
-														<p id="image-username">
-															^^Username
-														</p>
-														<p id="image-date">
-															^^Date
-														</p>
-													</li>
-													<li>
-														<p id="image-ratio">
-															^^Aspect Ratio
-														</p>
-														<p id="image-size">
-															^^Size
-														</p>
-													</li>
-													<li>
-														<label for="email1">Email this image, type email below:</label>
-														<input id="email1" class="email" type="email">
-														<input type="submit" value="Send">
-													</li>
-												</ul>
-											</div>
-											<div class="box">
-												<h2>CLASSIFY</h2>
-												<ul>
-													<li>
-														Tick the box to change classification
-													</li>
-													<li>
-														<input id="chk10" type="checkbox">
-														<label for="chk10">Request to license</label>
-													</li>
-													<li>
-														<input id="chk11" type="checkbox">
-														<label for="chk11">Block from all campaigns</label>
-													</li>
-													<li>
-														<input id="chk12" type="checkbox">
-														<label for="chk12">Mark for deletion</label>
-													</li>
-												</ul>
-											</div>
-											<div class="box">
-												<h2>CAMPAIGNS ADD / REMOVE</h2>
-												<ul class="add">
-													<li>
-														Tick the box to add / untick to remove content from campaigns
-													</li>
-												</ul>
-												<div class="outer">
-													<input class ="campaignImage" type="submit" value="Save">
-												</div>
-											</div>
-										</div>
-									</div>
-								</aside>
-								<div class="thumbnail-block">
-									<ul >
-										<div class="image-container"></div>
-									</ul>
-								</div>
-							</div>
-						</fieldset>
-					</form>
+						<!--</form>-->
+					</div>
 				</div>
 			</div>
 			<!--architecture page-->
@@ -782,7 +2024,7 @@
 							<a href="#brand-info" class="teb-opener">Brand Info</a>
 						</li>
 						<li>
-							<a href="#micro-blog" class="teb-opener">Micro Blog</a>
+							<a href="#micro-blog" class="teb-opener">Feeds</a>
 						</li>
 					</ul>
 				</div>
@@ -794,6 +2036,10 @@
 				<div class="product-block architecture-content" id="product-collection">
 					<form class ="Post"action="#">
 						<fieldset>
+							<div class="right-position-text">
+								<a class="edit lightbox" id="new-product" href="#popup1">New</a>
+								<input type="submit" value="Save">
+							</div>
 							<table class="product-table">
 								<tr>
 									<th>Product Name</th>
@@ -802,35 +2048,52 @@
 									<th class="last">Collection</th>
 								</tr>
 							</table>
-							<a class="edit lightbox" id="new-product" href="#popup1">New</a>
-							<input type="submit" value="Save">
 						</fieldset>
 					</form>
 				</div>
 				<div class="product-block brand-block2 architecture-content" id="brand-philosophy">
 					<form action="#">
 						<fieldset>
-							<div class="content-brand-philosophy"></div>
-
-							<a class="edit lightbox" id="new-brand-philosophy" href="#popup4">New</a>
-							<a class="edit lightbox" id="edit-brand-philosophy" href="#popup4">Edit</a>
-							<input type="submit" value="Save">
+							<div class="right-position-text">
+								<a class="edit lightbox" id="new-brand-philosophy" href="#popup4">New</a>
+								<a class="edit lightbox" id="edit-brand-philosophy" href="#popup4">Edit</a>
+								<input type="submit" value="Save">
+							</div>
+							<div class="content-brand-philosophy">
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+									magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+									eiusmod tempor incididunt
+								</p>
+							</div>
 						</fieldset>
 					</form>
 				</div>
 				<div class="product-block brand-block2 architecture-content" id="brand-info">
 					<form action="#">
 						<fieldset>
-							<div class="content-brand-info"></div>
-							<a class="edit lightbox" id="new-brand-info" href="#popup5">New</a>
-							<a class="edit lightbox" id="edit-brand-info" href="#popup5">Edit</a>
-							<input type="submit" value="Save">
+							<div class="right-position-text">
+								<a class="edit lightbox" id="new-brand-info" href="#popup5">New</a>
+								<a class="edit lightbox" id="edit-brand-info" href="#popup5">Edit</a>
+								<input type="submit" value="Save">
+							</div>
+							<div class="content-brand-info">
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+									magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+									eiusmod tempor incididunt
+								</p>
+							</div>
 						</fieldset>
 					</form>
 				</div>
 				<div class="architecture-content">
 					<form action="#" class="micro-block" id="micro-blog">
 						<fieldset>
+							<div class="right-position-text">
+								<a class="edit lightbox" id="new-handle-url" href="#popup6">New</a>
+								<input type="submit" value="Save">
+							</div>
 							<table class="micro-table">
 								<tr>
 									<th>Handle/URL</th>
@@ -839,28 +2102,162 @@
 									<th></th>
 									<th>Active</th>
 								</tr>
-								<tr>
-									<td>Test</td>
-									<td><a class="edit lightbox" id="edit-handle-url" href="#popup6">Edit</a></td>
-									<td>
-									<select>
-										<option value="twitter">Twitter</option>
-										<option value="weibo">Weibo</option>
-									</select></td>
-									<td><a class="edit test lightbox" href="#popup3">Test</a></td>
-									<td>
-									<input type="checkbox">
-									</td>
-								</tr>
+								<!--<tr>
+								<td>Test</td>
+								<td><a class="edit lightbox" id="edit-handle-url" href="#popup6">Edit</a></td>
+								<td>
+								<select>
+								<option value="twitter">Twitter</option>
+								<option value="weibo">Weibo</option>
+								</select></td>
+								<td><a class="edit test lightbox" href="#popup3">Test</a></td>
+								<td>
+								<input type="checkbox">
+								</td>
+								</tr>-->
 							</table>
-							<a class="edit lightbox" id="new-handle-url" href="#popup6">New</a>
-							<input type="submit" value="Save">
 						</fieldset>
 					</form>
 				</div>
 			</div>
+			<!--brand gallery page-->
+			<div id="brand_gallery_page">
+				<div class="campaign-menu">
+					<ul class="campaign-nav tabset">
+						<li class="active">
+							<a href="#brand_galleries" class="teb-opener">Brand Gallery</a>
+						</li>
+					</ul>
+				</div>
+				<div id="brand_galleries">
+					<div class="form-area">
+						<form action="#" method="post">
+							<div class="select-text">
+								<label for="filter1">Filter 1:</label>
+								<select>
+									<option>Active</option>
+									<option>Inactive</option>
+								</select>
+								<br>
+								<label for="sort-by">Sort by:</label>
+								<select>
+									<option>Date Ascending</option>
+									<option>Date Descending</option>
+								</select>
+							</div>
+							<div class="search">
+								<input type="text" placeholder="Search Hashtag" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Hashtag'" />
+							</div>
+							<div class="clear"></div>
+							<div class="brand-gallery-img">
+								<ul>
+									<li>
+										<ul>
+											<li>
+												<img src="main_frame/images/image.png" alt="brand gallery" />
+												<div class="txt-hover-top">
+													<div class="txt-left">
+														<ul>
+															<li>
+																^^Photo ID
+															</li>
+															<li>
+																^^Hashtag 1
+															</li>
+															<li>
+																^^Hashtag 2
+															</li>
+															<li>
+																^^Date of upload
+															</li>
+														</ul>
+													</div>
+													<div class="txt-right">
+														<ul>
+															<li>
+																<a href="#popup-brand-gallery" class="lightbox">Send Message to Artist</a>
+															</li>
+															<li>
+																&nbsp;
+															</li>
+															<li>
+																&nbsp;
+															</li>
+															<li>
+																<input type="checkbox" />
+																<span>Block</span>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="txt-hover-bottom">
+													<p>
+														Active Campaigns:&lsaquo;space&rsaquo;^^COUNT
+													</p>
+												</div>
+											</li>
+											<li>
+												<img src="main_frame/images/image.png" alt="brand gallery" />
+												<div class="txt-hover-top">
+													<div class="txt-left">
+														<ul>
+															<li>
+																^^Photo ID
+															</li>
+															<li>
+																^^Hashtag 1
+															</li>
+															<li>
+																^^Hashtag 2
+															</li>
+															<li>
+																^^Date of upload
+															</li>
+														</ul>
+													</div>
+													<div class="txt-right">
+														<ul>
+															<li>
+																<a href="#popup-brand-gallery" class="lightbox">Send Message to Artist</a>
+															</li>
+															<li>
+																&nbsp;
+															</li>
+															<li>
+																&nbsp;
+															</li>
+															<li>
+																<input type="checkbox" />
+																<span>Block</span>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="txt-hover-bottom">
+													<p>
+														Active Campaigns:&lsaquo;space&rsaquo;^^COUNT
+													</p>
+												</div>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!--chat room-->
+			<div id="chat_room_page">
+				<h1>Chat Room</h1>
+			</div>
 			</main>
 
+		</div>
+		<div id="footer">
+			<p>
+				All Rights Reserved. Copyright © 2015 Aroy Innovation LLC.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">Terms of Use</a>&nbsp; | &nbsp;<a href="#">Privacy Policy</a>&nbsp; | &nbsp;<a href="#">Help</a>
+			</p>
 		</div>
 
 		<!-- include jQuery library -->
@@ -871,34 +2268,13 @@
 		</script>
 		<!-- <script type="text/javascript" src="main_frame/js/lib/underscore/underscore-min.js"></script>
 		<script type="text/javascript" src="main_frame/js/lib/backbone/backbone-min.js"></script> -->
+		<script type="text/javascript" src="main_frame/js/lib/Chart.js"></script>
 		<script type="text/javascript" src="main_frame/js/lib/isotope/isotope.pkgd.min.js"></script>
 		<script type="text/javascript" src="main_frame/js/lib/imageload/imagesloaded.pkgd.min.js"></script>
 		<script type="text/javascript" src="main_frame/js/lib/lazyload/jquery.lazyload.js" ></script>
-		<!-- include custom JavaScript -->
-		<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included --
-		<script src="main_frame/js/lib/jquery.ui.widget.js"></script>-->
-		<!-- The Templates plugin is included to render the upload/download listings -->
-		<!-- <script src="main_frame/js/lib/fileupload/tmpl.min.js"></script> -->
-		<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-		<!-- <script src="main_frame/js/lib/fileupload/load-image.all.min.js"></script> -->
-		<!-- The Canvas to Blob plugin is included for image resizing functionality -->
-		<!-- <script src="main_frame/js/lib/fileupload/canvas-to-blob.min.js"></script> -->
-		<!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
 		<script src="main_frame/js/lib/bootstrap.min.js"></script>
-		<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-		<!-- <script src="main_frame/js/lib/fileupload/jquery.iframe-transport.js"></script> -->
-		<!-- The basic File Upload plugin -->
-		<!-- <script src="main_frame/js/lib/fileupload/jquery.fileupload.js"></script> -->
-		<!-- The File Upload processing plugin -->
-		<!-- <script src="main_frame/js/lib/fileupload/jquery.fileupload-process.js"></script> -->
-		<!-- The File Upload image preview & resize plugin -->
-		<!-- <script src="main_frame/js/lib/fileupload/jquery.fileupload-image.js"></script> -->
-		<!-- The File Upload audio preview plugin --
-		<script src="main_frame/js/lib/fileupload/jquery.fileupload-audio.js"></script>-->
-		<!-- The File Upload video preview plugin --
-		<script src="main_frame/js/lib/fileupload/jquery.fileupload-video.js"></script>-->
-		<!-- The File Upload validation plugin -->
-		<!-- <script src="main_frame/js/lib/fileupload/jquery.fileupload-validate.js"></script> -->
+		<script src="main_frame/js/bootstrap.file-input.js"></script>
+		<script type="text/javascript" src="main_frame/js/select2.min.js"></script>
 		<script type="text/javascript" src="main_frame/js/layout.js?v=1.01"></script>
 		<script type="text/javascript" src="main_frame/js/plugin.js?v=1.19"></script>
 		<!-- <script type="text/javascript" src="main_frame/js/backbone.main.js?v=1.01"></script> -->
@@ -906,6 +2282,7 @@
 		<script type="text/javascript" src="main_frame/js/image.main.js?v=1.05"></script>
 		<script type="text/javascript" src="main_frame/js/placeholder.main.js?v=1.01"></script>
 		<script type="text/javascript" src="main_frame/js/lib/dropzone/dropzone.min.js"></script>
+		<script type="text/javascript" src="main_frame/js/jquery.dynatable.js"></script>
 		<script type="text/javascript" src="main_frame/js/jquery.main.js?v=1.35"></script>
 	</body>
 </html>

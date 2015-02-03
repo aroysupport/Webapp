@@ -51,22 +51,21 @@ var events = {
 	Account : {
 		changes : function() {
 			$('.accountID').bind('change.account', function() {
+				debug.msg("Events -> Account -> Changes ", 		"Changes: " + $(this));
 				current.Account.set($(this).val());
-				getData(".accountBrand", "brand")
+				getData(".accountBrand", "brand");
 				// check();
 				current.Brand.set($(".accountBrand").val());
 				$('.accountBrand').change();
 				queue.brand.clear();
-				debug.msg("changes - Account ", "Changes: " + $(this));
 			});
 		}
 	},
 	Brand : {
 		changes : function() {
 			$(".accountBrand").bind("change.brand", function() {
+				debug.msg("Events -> Brand -> Changes ", 		"Changes: " + $(this));
 				current.Brand.set($(this).val());
-				// setBrand($(".accountBrand").val());
-				debug.msg("Current - Brand ", "Changes: " + $(this));
 				MainControl();
 			});
 		}
@@ -74,13 +73,14 @@ var events = {
 	Product : {
 		changes : function() {
 			$(".product-table tr .collection, .product-table tr .brand").bind("change.check", function() {
-				debug.msg("changes - Product ", "Changes: " + $(this));
+				debug.msg("Events -> Product -> Changes ", 		"Changes: " + $(this));
 				var value = $(this).parent().parent().attr("value");
 				debug.msg("changes - Product ", "tr value: " + value)
 				queue.product.push(value);
 			});
 		},
 		update : function() {
+			debug.msg("Events -> Product -> Update ", 		"Update: " + $(this));
 			$(".product-table tr .collection").unbind("change.check");
 			$(".product-table tr:gt(0)").each(function() {
 				var value = $(this).find("#CollectionID").val();
@@ -184,6 +184,21 @@ var template = {
 		var collectionOptions = $("<td/>").html($("<select/>").addClass("collection").attr("name", "CollectionID").html($("<option/>").html("Select Collection"))).appendTo(row);
 		var input = $("<input/>").addClass("productCollection").attr("name", "Name").attr("type", "hidden").val(ProductName).appendTo(row);
 		return row;
+	},
+	contentImage:function(imageURL, photoID, product, description, username, date, counts){
+		var listTemplate = $("<li/>");
+		var li = '<li><div class="image-container">';
+		var img = '<img src="'+imageURL+'" alt="brand gallery" /></div>';
+		var txtLeft = '<div class="txt-hover-top"><div class="txt-left"><ul>';
+		var listTemplate = $("<li/>");
+		var imageInfo = listTemplate.html("PhotoID: 	"+photoID).prop('outerHTML') + listTemplate.html("Product: 		"+product).prop('outerHTML') + listTemplate.html("Description: 		"+description).prop('outerHTML') + listTemplate.html("Username: 	"+username).prop('outerHTML') + listTemplate.html("Date of upload: 		"+date).prop('outerHTML');
+		var txtRight = '</ul></div><div class="txt-right"><ul><li>&nbsp;</li><li><a href="#popup-content-edit-product" class="lightbox">Edit Product</a></li>'+
+						'<li><a href="#popup-content-edit-desc" class="lightbox">Edit Description</a></li><li>&nbsp;</li><li>'+
+						'<input type="checkbox" /><span>Delete &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><input type="checkbox" />'+
+						'<span>Block</span></li></ul></div></div>';
+		var txtBottom = '<div class="txt-hover-bottom"><a href="#popup-campaign" class="lightbox">Active Campaigns:'+ counts +'</a></div></li>';
+		var result = li+img +txtLeft+imageInfo+txtRight+txtBottom;
+		return result;
 	}
 };
 
@@ -363,31 +378,31 @@ var content = {
 				lightboxReload();
 			} else {
 				$(content.targetRowValue).find(options.tableHolder).val(content.input.val());
-				queue.brand.push(getBrand());
+				queue.brand.push(current.Brand.get());
 			}
 			break;
 		case "philosophy":
 			if (method == "add") {
 				debug.msg("Blog", "				Table: " + options.table);
 				debug.msg("Blog", "				input: " + content.input.val() + "\n");
-				queue.brand.push(getBrand());
+				queue.brand.push(current.Brand.get());
 				$(options.table).append($("<p/>").html(content.input.val()));
 				$("#new-brand-philosophy").hide();
 				$("#edit-brand-philosophy").show();
 			} else {
-				queue.brand.push(getBrand());
+				queue.brand.push(current.Brand.get());
 			}
 			break;
 		case "info":
 			if (method == "add") {
 				debug.msg("Blog", "				Table: " + options.table);
 				debug.msg("Blog", "				input: " + content.input.val() + "\n");
-				queue.brand.push(getBrand());
+				queue.brand.push(current.Brand.get());
 				$(options.table).append($("<p/>").html(content.input.val()));
 				$("#new-brand-info").hide();
 				$("#edit-brand-info").show();
 			} else {
-				queue.brand.push(getBrand());
+				queue.brand.push(current.Brand.get());
 			}
 			break;
 		default:
